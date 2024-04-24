@@ -135,17 +135,18 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CitySelectionsCell" rowHeight="235" id="0df-YN-BaA" customClass="CitySelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="235"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CitySelectionsCell" rowHeight="223" id="0df-YN-BaA" customClass="CitySelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="223"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0df-YN-BaA" id="2Tr-eF-2nw">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="235"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="223"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-rS-VRq">
-                                                    <rect key="frame" x="0.0" y="19" width="393" height="216"/>
+                                                <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-rS-VRq">
+                                                    <rect key="frame" x="0.0" y="57" width="393" height="227"/>
+                                                    <color key="backgroundColor" red="0.53838181500000004" green="0.62554317709999996" blue="0.76257288459999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-Xi-9uP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-Xi-9uP">
                                                     <rect key="frame" x="20" y="11" width="54" height="26"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -154,20 +155,21 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leading" id="38j-Mw-DJ8"/>
-                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="top" secondItem="2Tr-eF-2nw" secondAttribute="topMargin" id="6FV-Ii-Qch"/>
-                                                <constraint firstAttribute="bottom" secondItem="A6s-rS-VRq" secondAttribute="bottom" id="HAK-qi-LDf"/>
-                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leadingMargin" id="nFR-s4-2wL"/>
-                                                <constraint firstAttribute="trailing" secondItem="A6s-rS-VRq" secondAttribute="trailing" id="tbP-Al-MtC"/>
+                                                <constraint firstAttribute="trailing" secondItem="A6s-rS-VRq" secondAttribute="trailing" id="B6M-FY-zaC"/>
+                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="top" secondItem="TBZ-Xi-9uP" secondAttribute="bottom" constant="20" id="ICo-ku-sdE"/>
+                                                <constraint firstAttribute="bottom" secondItem="A6s-rS-VRq" secondAttribute="bottom" constant="20" id="XXv-oH-OqA"/>
+                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="top" secondItem="2Tr-eF-2nw" secondAttribute="topMargin" id="ZRe-uj-Csc"/>
+                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leading" id="nWY-UO-ptM"/>
+                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leadingMargin" id="tgl-BQ-IRQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cityPickerView" destination="A6s-rS-VRq" id="zPr-zr-0bw"/>
-                                            <outlet property="citySelectionLabel" destination="TBZ-Xi-9uP" id="0zQ-ez-Idl"/>
+                                            <outlet property="cityPickerView" destination="A6s-rS-VRq" id="7IB-bw-KLq"/>
+                                            <outlet property="citySelectionLabel" destination="TBZ-Xi-9uP" id="cys-Qz-3mz"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateSelectionsCell" rowHeight="111" id="sfG-kd-pat" customClass="DateSelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="285" width="393" height="111"/>
+                                        <rect key="frame" x="0.0" y="273" width="393" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sfG-kd-pat" id="7Bz-c9-N2A">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="111"/>
@@ -197,7 +199,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="110" id="geU-Rp-KJX">
-                                        <rect key="frame" x="0.0" y="396" width="393" height="110"/>
+                                        <rect key="frame" x="0.0" y="384" width="393" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="geU-Rp-KJX" id="HqU-Jr-sai">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
@@ -226,21 +228,26 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchButtonsCell" rowHeight="117" id="kCp-cn-CM6" customClass="SearchButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="506" width="393" height="117"/>
+                                        <rect key="frame" x="0.0" y="494" width="393" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCp-cn-CM6" id="bQY-co-62F">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FD-7D-aIY">
-                                                    <rect key="frame" x="159" y="41" width="75" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FD-7D-aIY">
+                                                    <rect key="frame" x="120" y="41" width="153" height="35"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="leading" secondItem="bQY-co-62F" secondAttribute="leadingMargin" constant="100" id="9wj-xu-9Vu"/>
+                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="top" secondItem="bQY-co-62F" secondAttribute="topMargin" constant="30" id="AHN-c2-hjt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4FD-7D-aIY" secondAttribute="trailing" constant="100" id="EzH-3j-mr1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4FD-7D-aIY" secondAttribute="bottom" constant="30" id="ZQP-Gj-5Cx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="searchButton" destination="4FD-7D-aIY" id="Rmw-df-4Cw"/>
