@@ -58,21 +58,25 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell else {
-                fatalError("The dequeued cell is not an instance of CitySelectionsTableViewCell.")
+            var cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell
+            cell?.cityPickerView.delegate = self
+            cell?.cityPickerView.dataSource = self
+            switch indexPath.row {
+            case 0:
+                cell?.citySelectionLabel.text = "Origin City"
+                cell?.pickerMode = .origin
+                cell?.cityPickerView.reloadAllComponents()
+            case 1:
+                cell?.citySelectionLabel.text = "Destination City"
+                cell?.pickerMode = .destination
+                cell?.cityPickerView.reloadAllComponents()
+                
+            default:
+                cell?.citySelectionLabel.text = "Origin City"
+                cell?.cityPickerView.reloadAllComponents()
             }
-            let keys = [ "Origin City", "Destination City"]
-            let key = keys[indexPath.row]
-            cell.citySelectionLabel.text = key
             
-            cell.cityPickerView.delegate = self
-            cell.cityPickerView.dataSource = self
-            cell.cityPickerView.reloadAllComponents()
-            // Assuming you have the PickerMode enum inside the CitySelectionsTableViewCell
-            // The following is pseudocode for illustration, replace with actual implementation.
-            cell.pickerMode = indexPath.row == 0 ? .origin : .destination // Set the mode based on the row
-            // Rest of the cell configuration...
-            return cell
+            return cell!
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonsCell", for: indexPath) as? SearchButtonTableViewCell
@@ -94,6 +98,6 @@ extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return cities[row]
     }
-
-}
     
+}
+
