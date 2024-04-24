@@ -15,6 +15,8 @@
 		44D70B8D2BD7FC19005E92B0 /* DestinationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */; };
 		44D70B8F2BD7FC3D005E92B0 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D70B8E2BD7FC3D005E92B0 /* Cities.plist */; };
 		44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B922BD88866005E92B0 /* UserInfoViewController.swift */; };
+		44D70B952BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */; };
+		44D70B972BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchViewController.swift; sourceTree = "<group>"; };
 		44D70B8E2BD7FC3D005E92B0 /* Cities.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		44D70B922BD88866005E92B0 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectionsTableViewCell.swift; sourceTree = "<group>"; };
+		44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				44826DA52BD730450032ACEC /* LaunchScreen.storyboard */,
 				44826DA82BD730450032ACEC /* Info.plist */,
 				44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */,
+				44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */,
+				44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */,
 				44D70B8E2BD7FC3D005E92B0 /* Cities.plist */,
 				44D70B922BD88866005E92B0 /* UserInfoViewController.swift */,
 			);
@@ -146,8 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				44826D9B2BD730410032ACEC /* AppDelegate.swift in Sources */,
+				44D70B952BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift in Sources */,
 				44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */,
 				44826D9D2BD730410032ACEC /* SceneDelegate.swift in Sources */,
+				44D70B972BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift in Sources */,
 				44D70B8D2BD7FC19005E92B0 /* DestinationSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

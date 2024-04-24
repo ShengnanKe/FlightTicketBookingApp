@@ -10,7 +10,7 @@ import UIKit
 class DestinationSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    
     
     datePicker.datePickerMode = .date // or .time / .dateAndTime
     datePicker.minimumDate = Date() // current date
@@ -21,11 +21,10 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         
         
         
-        var selectedOriginCity: String?
-        var selectedDestinationCity: String?
-        
+
         
         var citiesList: [String] = []
+        var cities = [String]()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -62,7 +61,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldCell", for: indexPath) as? TextFieldTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell
                 let keys = ["Company Name", "Head Office Address", "Website"]
             }
             
