@@ -58,7 +58,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell
             cell?.cityPickerView.delegate = self
             cell?.cityPickerView.dataSource = self
             switch indexPath.row {
@@ -75,9 +75,10 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
                 cell?.citySelectionLabel.text = "Origin City"
                 cell?.cityPickerView.reloadAllComponents()
             }
-            
             return cell!
         }
+//        else if indexPath.section == 1 {
+//        }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonsCell", for: indexPath) as? SearchButtonTableViewCell
             cell?.searchButton.setTitle("Search", for: .normal)
