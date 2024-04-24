@@ -162,6 +162,9 @@
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="vGp-9Q-Oj2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="datePicker" destination="Ek0-d3-Foc" id="2Ld-cX-Xcw"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="110" id="geU-Rp-KJX">
                                         <rect key="frame" x="0.0" y="396" width="393" height="110"/>
@@ -207,6 +210,7 @@
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
