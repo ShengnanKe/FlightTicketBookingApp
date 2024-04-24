@@ -1,5 +1,5 @@
 //
-//  UserInfoButtonTableViewCell.swift
+//  SearchButtonTableViewCell.swift
 //  FlightTicketBookingApp
 //
 //  Created by KKNANXX on 4/23/24.
@@ -7,10 +7,9 @@
 
 import UIKit
 
-class UserInfoButtonTableViewCell: UITableViewCell {
+class SearchButtonTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var submitButton: UIButton!
-    //@IBOutlet weak var showUserInfoButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

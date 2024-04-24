@@ -19,6 +19,7 @@
 		44D70B972BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */; };
 		44D70B992BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */; };
 		44D70B9B2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */; };
+		44D70B9D2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionsTableViewCell.swift; sourceTree = "<group>"; };
 		44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoButtonTableViewCell.swift; sourceTree = "<group>"; };
+		44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */,
 				44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */,
 				44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */,
+				44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */,
 				44D70B8E2BD7FC3D005E92B0 /* Cities.plist */,
 				44D70B922BD88866005E92B0 /* UserInfoViewController.swift */,
 				44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */,
@@ -162,6 +165,7 @@
 				44D70B9B2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift in Sources */,
 				44D70B992BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift in Sources */,
 				44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */,
+				44D70B9D2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift in Sources */,
 				44826D9D2BD730410032ACEC /* SceneDelegate.swift in Sources */,
 				44D70B972BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift in Sources */,
 				44D70B8D2BD7FC19005E92B0 /* DestinationSearchViewController.swift in Sources */,

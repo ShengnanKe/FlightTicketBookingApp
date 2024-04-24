@@ -9,6 +9,8 @@ import UIKit
 
 class UserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var userInfoTableView: UITableView!
+    
     var userInfo: [String: Any] = [
         "First name": "",
         "Last name": "",
@@ -50,7 +52,7 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "buttonsCell", for: indexPath) as? UserInfoButtonTableViewCell
             cell?.submitButton.setTitle("Save", for: .normal)
-            cell?.showUserInfoButton.setTitle("Show Company Info", for: .normal)
+            //cell?.showUserInfoButton.setTitle("Show Company Info", for: .normal)
             return cell!
         }
     }

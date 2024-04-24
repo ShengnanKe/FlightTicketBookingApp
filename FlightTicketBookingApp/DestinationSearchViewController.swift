@@ -58,7 +58,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityPickerCell", for: indexPath) as? CitySelectionsTableViewCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell else {
                     fatalError("The dequeued cell is not an instance of CitySelectionsTableViewCell.")
                 }
                 // Assuming you have the PickerMode enum inside the CitySelectionsTableViewCell
@@ -67,6 +67,11 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
                 // Rest of the cell configuration...
                 return cell
             }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonsCell", for: indexPath) as? SearchButtonTableViewCell
+            cell?.searchButton.setTitle("Search", for: .normal)
+            return cell!
+        }
         
     }
 }

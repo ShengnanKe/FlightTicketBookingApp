@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="115" id="6AC-fW-aCu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoTextFieldCell" rowHeight="115" id="6AC-fW-aCu" customClass="UserInfoTextFieldTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6AC-fW-aCu" id="P3b-hA-HIM">
@@ -45,6 +45,10 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="formTextField" destination="0eD-h9-MTp" id="NAA-zy-DeH"/>
+                                            <outlet property="formTextFieldLable" destination="jJi-93-9KE" id="uci-za-nZk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="119" id="1tx-By-UQ0">
                                         <rect key="frame" x="0.0" y="165" width="393" height="119"/>
@@ -72,6 +76,25 @@
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonsCell" rowHeight="140" id="xjK-zJ-HT5" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="284" width="393" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjK-zJ-HT5" id="Owe-bP-qmt" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-pL-tZe">
+                                                    <rect key="frame" x="159" y="53" width="75" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="submitButton" destination="RXG-pL-tZe" id="lxX-AJ-wpY"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Travel Information Entry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZE-C7-7zZ">
@@ -92,6 +115,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" id="igV-Ew-HW0"/>
+                    <connections>
+                        <outlet property="userInfoTableView" destination="T1p-fb-7G0" id="iur-qC-P9W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sr2-5g-bwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,6 +161,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="A6s-rS-VRq" secondAttribute="trailing" id="tbP-Al-MtC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityPickerView" destination="A6s-rS-VRq" id="zPr-zr-0bw"/>
+                                            <outlet property="citySelectionLabel" destination="TBZ-Xi-9uP" id="0zQ-ez-Idl"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateSelectionsCell" rowHeight="111" id="sfG-kd-pat" customClass="DateSelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="285" width="393" height="111"/>
@@ -195,7 +225,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="117" id="kCp-cn-CM6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchButtonsCell" rowHeight="117" id="kCp-cn-CM6" customClass="SearchButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="506" width="393" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCp-cn-CM6" id="bQY-co-62F">
@@ -212,6 +242,9 @@
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="searchButton" destination="4FD-7D-aIY" id="Rmw-df-4Cw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -251,21 +284,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5A-T6-tQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2008" y="79"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FlightTicketBookingApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-150" y="4"/>
         </scene>
     </scenes>
     <resources>
