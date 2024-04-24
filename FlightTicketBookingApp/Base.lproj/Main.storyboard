@@ -28,22 +28,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJi-93-9KE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJi-93-9KE">
                                                     <rect key="frame" x="20" y="11" width="54" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eD-h9-MTp">
-                                                    <rect key="frame" x="20" y="45" width="353" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eD-h9-MTp">
+                                                    <rect key="frame" x="20" y="47" width="353" height="37"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="jJi-93-9KE" firstAttribute="top" secondItem="P3b-hA-HIM" secondAttribute="topMargin" id="B3y-aO-Ijk"/>
+                                                <constraint firstItem="0eD-h9-MTp" firstAttribute="trailing" secondItem="P3b-hA-HIM" secondAttribute="trailingMargin" id="GRu-ZR-LlT"/>
+                                                <constraint firstItem="jJi-93-9KE" firstAttribute="leading" secondItem="P3b-hA-HIM" secondAttribute="leadingMargin" id="Hfg-Ga-wQ0"/>
+                                                <constraint firstItem="0eD-h9-MTp" firstAttribute="leading" secondItem="P3b-hA-HIM" secondAttribute="leadingMargin" id="KFE-bz-Tim"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0eD-h9-MTp" secondAttribute="bottom" constant="20" id="n8n-bT-YKs"/>
+                                                <constraint firstItem="0eD-h9-MTp" firstAttribute="top" secondItem="jJi-93-9KE" secondAttribute="bottom" constant="10" id="rh0-DH-4GB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="formTextField" destination="0eD-h9-MTp" id="NAA-zy-DeH"/>
@@ -57,16 +63,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vr-LS-xhh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vr-LS-xhh">
                                                     <rect key="frame" x="20" y="11" width="54" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sbA-T5-Uti">
-                                                    <rect key="frame" x="20" y="45" width="131" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sbA-T5-Uti">
+                                                    <rect key="frame" x="20" y="47" width="131" height="32"/>
                                                     <segments>
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
@@ -74,6 +78,13 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="sbA-T5-Uti" firstAttribute="top" secondItem="8vr-LS-xhh" secondAttribute="bottom" constant="10" id="EMY-CD-7o4"/>
+                                                <constraint firstItem="sbA-T5-Uti" firstAttribute="leading" secondItem="w7h-wg-cBY" secondAttribute="leadingMargin" id="M0e-Fu-LUb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sbA-T5-Uti" secondAttribute="bottom" constant="30" id="hzD-o8-cVh"/>
+                                                <constraint firstItem="8vr-LS-xhh" firstAttribute="leading" secondItem="w7h-wg-cBY" secondAttribute="leadingMargin" id="kkv-e1-jDY"/>
+                                                <constraint firstItem="8vr-LS-xhh" firstAttribute="top" secondItem="w7h-wg-cBY" secondAttribute="topMargin" id="oKo-8h-gCx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonsCell" rowHeight="140" id="xjK-zJ-HT5" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
