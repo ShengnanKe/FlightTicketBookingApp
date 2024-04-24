@@ -22,7 +22,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.separatorColor = .clear
-        // Do any additional setup after loading the view.
+        
         loadCitiesFromPlist()
     }
     
@@ -32,7 +32,6 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
             cities = Array(cityDictionary.keys).sorted()
         }
     }
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -80,10 +79,8 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
             cell?.searchButton.setTitle("Search", for: .normal)
             return cell!
         }
-        
     }
 }
-
 
 extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
