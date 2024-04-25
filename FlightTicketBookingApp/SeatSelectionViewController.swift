@@ -13,18 +13,18 @@ import UIKit
 class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
-    @IBOutlet weak var firstClassSeatSelectionCollectionView: UICollectionView!
+    @IBOutlet weak var seatSelectionCollectionView: UICollectionView!
     // 1 way: transparent background color
     // 2 way: change icon
     // 1 collection view with 2 sections
-    @IBOutlet weak var econClassSeatSelectionCollectionView: UICollectionView!
+    //@IBOutlet weak var econClassSeatSelectionCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstClassSeatSelectionCollectionView.delegate = self
-        firstClassSeatSelectionCollectionView.dataSource = self
-        firstClassSeatSelectionCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        seatSelectionCollectionView.delegate = self
+        seatSelectionCollectionView.dataSource = self
+        seatSelectionCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         // Do any additional setup after loading the view.
     }
@@ -35,14 +35,19 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
         return 10.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         // apply seperator here
-        let size : CGSize = CGSize(width: self.view.frame.width, height: 20.0)
-        return size
+        if section == 0{
+            let size : CGSize = CGSize(width: self.view.frame.width, height: 20.0)
+            return size
+        }
+        else{
+            let size : CGSize = CGSize(width: self.view.frame.width, height: 15.0)
+            return size
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
