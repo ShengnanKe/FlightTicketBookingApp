@@ -56,7 +56,7 @@
                                             <outlet property="formTextFieldLable" destination="jJi-93-9KE" id="uci-za-nZk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="119" id="1tx-By-UQ0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserGenderCell" rowHeight="119" id="1tx-By-UQ0" customClass="UserGenderTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="165" width="393" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1tx-By-UQ0" id="w7h-wg-cBY">
@@ -86,6 +86,10 @@
                                                 <constraint firstItem="8vr-LS-xhh" firstAttribute="top" secondItem="w7h-wg-cBY" secondAttribute="topMargin" id="oKo-8h-gCx"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="genderSelectionLabel" destination="8vr-LS-xhh" id="g6K-EM-vdX"/>
+                                            <outlet property="genderSelectionSegment" destination="sbA-T5-Uti" id="ulc-lt-oy7"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonsCell" rowHeight="140" id="xjK-zJ-HT5" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="284" width="393" height="140"/>
@@ -94,14 +98,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-pL-tZe">
-                                                    <rect key="frame" x="159" y="53" width="75" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-pL-tZe">
+                                                    <rect key="frame" x="140" y="51" width="113" height="38"/>
+                                                    <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                                    <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="RXG-pL-tZe" secondAttribute="bottom" constant="40" id="TBw-Om-DXf"/>
+                                                <constraint firstItem="RXG-pL-tZe" firstAttribute="top" secondItem="Owe-bP-qmt" secondAttribute="topMargin" constant="40" id="Tcd-Di-qvP"/>
+                                                <constraint firstItem="RXG-pL-tZe" firstAttribute="leading" secondItem="Owe-bP-qmt" secondAttribute="leadingMargin" constant="120" id="bOy-34-1Fa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RXG-pL-tZe" secondAttribute="trailing" constant="120" id="bvK-PM-FA2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="submitButton" destination="RXG-pL-tZe" id="lxX-AJ-wpY"/>
                                         </connections>
@@ -196,16 +208,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-d3-Foc">
-                                                    <rect key="frame" x="20" y="42" width="353" height="38"/>
+                                                <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-d3-Foc">
+                                                    <rect key="frame" x="20" y="47" width="260" height="43"/>
                                                 </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="5" id="By9-Qc-z6v"/>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="MYM-Ma-moc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Ek0-d3-Foc" secondAttribute="bottom" constant="20" id="fZf-NN-Mw1"/>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="trailing" secondItem="7Bz-c9-N2A" secondAttribute="trailingMargin" id="qP3-qB-bt1"/>
+                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="10" id="3gh-QB-OM9"/>
+                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="a50-wg-T94"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Due-kY-jKL" secondAttribute="trailing" constant="20" symbolic="YES" id="dF0-7T-PSF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ek0-d3-Foc" secondAttribute="bottom" constant="10" id="dU3-9J-Hzb"/>
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="tRk-ke-NLg"/>
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="top" secondItem="7Bz-c9-N2A" secondAttribute="topMargin" id="uMq-qY-CTh"/>
                                             </constraints>
@@ -318,6 +330,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

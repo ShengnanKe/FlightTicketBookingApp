@@ -48,9 +48,9 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 250.0 // the city picker view takes more space
+            return 230.0 // the city picker view takes more space
         } else if indexPath.section == 1{
-            return 150.0 // the date picker view takes more space
+            return 120.0 // the date picker view takes more space
         }else {
             return 100.0 // The height for all other cells
         }
