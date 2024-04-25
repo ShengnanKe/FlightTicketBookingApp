@@ -5,12 +5,19 @@
 //  Created by KKNANXX on 4/24/24.
 //
 
+// save in userdefault
+
+
 import UIKit
 
 class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
     @IBOutlet weak var firstClassSeatSelectionCollectionView: UICollectionView!
+    // 1 way: transparent background color
+    // 2 way: change icon
+    // 1 collection view with 2 sections
+    @IBOutlet weak var econClassSeatSelectionCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +40,17 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // apply seperator here
         let size : CGSize = CGSize(width: self.view.frame.width, height: 20.0)
         return size
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        16
+        if section == 0{
+            return 12
+        }else{
+            return 30
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

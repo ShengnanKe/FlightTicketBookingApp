@@ -5,6 +5,9 @@
 //  Created by KKNANXX on 4/23/24.
 //
 
+// show a list of booking
+// delete and update
+
 import UIKit
 
 class UserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -106,9 +109,7 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
             } else {
                 cell?.genderSelectionSegment.selectedSegmentIndex = UISegmentedControl.noSegment
             }
-            
             cell?.genderSelectionSegment.addTarget(self, action: #selector(genderSegmentChanged(_:)), for: .valueChanged)
-            
             return cell!
         }
         if indexPath.section == 2 {
