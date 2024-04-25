@@ -13,7 +13,6 @@
         <!--User Info-->
         <scene sceneID="QJb-bg-hPf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sr2-5g-bwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="zug-AV-XRW" customClass="UserInfoViewController" customModule="FlightTicketBookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jcp-ae-1Jl">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -172,6 +171,7 @@
                         <outlet property="userInfoTableView" destination="T1p-fb-7G0" id="OhE-xl-ess"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sr2-5g-bwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-990.07633587786256" y="400.7042253521127"/>
         </scene>
@@ -281,13 +281,14 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-d3-Foc">
-                                                    <rect key="frame" x="20" y="47" width="260" height="43"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-d3-Foc">
+                                                    <rect key="frame" x="20" y="47" width="263" height="43"/>
                                                 </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="Ek0-d3-Foc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="10" id="3gh-QB-OM9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ek0-d3-Foc" secondAttribute="trailing" constant="90" id="Vr3-au-INl"/>
                                                 <constraint firstItem="Ek0-d3-Foc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="a50-wg-T94"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Due-kY-jKL" secondAttribute="trailing" constant="20" symbolic="YES" id="dF0-7T-PSF"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Ek0-d3-Foc" secondAttribute="bottom" constant="10" id="dU3-9J-Hzb"/>
