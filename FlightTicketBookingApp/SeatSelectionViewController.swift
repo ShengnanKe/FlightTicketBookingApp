@@ -10,14 +10,14 @@ import UIKit
 class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
-    @IBOutlet weak var seatSelectionCollectionView: UICollectionView!
+    @IBOutlet weak var firstClassSeatSelectionCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        seatSelectionCollectionView.delegate = self
-        seatSelectionCollectionView.dataSource = self
-        seatSelectionCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        firstClassSeatSelectionCollectionView.delegate = self
+        firstClassSeatSelectionCollectionView.dataSource = self
+        firstClassSeatSelectionCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         // Do any additional setup after loading the view.
     }
@@ -42,11 +42,18 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "seatCell", for: indexPath) as! SeatCollectionViewCell
-        cell?.seatLable.text = "Row - \(indexPath.row)"
+        let cell: UICollectionViewCell
+        if indexPath.section == 0 {
+            let unselectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UnselectedSeatCell", for: indexPath) as! UnselectedSeatCollectionViewCell
+            unselectedCell.unSelectedSeatLable.text = "Row - \(indexPath.row)"
+            cell = unselectedCell
+        }
+        else{
+            let selectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSeatCell", for: indexPath) as! SelectedSeatCollectionViewCell
+            selectedCell.selectedSeatLable.text = "Row - \(indexPath.row)"
+            cell = selectedCell
+        }
         return cell
     }
-    
-    
     
 }
