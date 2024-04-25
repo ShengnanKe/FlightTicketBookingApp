@@ -1,16 +1,16 @@
 //
-//  DateSelectionsTableViewCell.swift
+//  TravelerNumTableViewCell.swift
 //  FlightTicketBookingApp
 //
-//  Created by KKNANXX on 4/23/24.
-// startDatePickerView / endDatePickerView
+//  Created by KKNANXX on 4/24/24.
+//
 
 import UIKit
 
-class DateSelectionsTableViewCell: UITableViewCell {
+class TravelerNumTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var dateSelectionLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var travelerNumTextLable: UILabel!
+    @IBOutlet weak var travelerNumTextField: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -146,32 +146,36 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CitySelectionsCell" rowHeight="223" id="0df-YN-BaA" customClass="CitySelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="223"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CitySelectionsCell" rowHeight="234" id="0df-YN-BaA" customClass="CitySelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="234"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0df-YN-BaA" id="2Tr-eF-2nw">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="223"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="234"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-rS-VRq">
-                                                    <rect key="frame" x="0.0" y="57" width="393" height="227"/>
-                                                    <color key="backgroundColor" red="0.53838181500000004" green="0.62554317709999996" blue="0.76257288459999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </pickerView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-Xi-9uP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-Xi-9uP">
                                                     <rect key="frame" x="20" y="11" width="54" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="190-wd-hAs"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-rS-VRq">
+                                                    <rect key="frame" x="20" y="42" width="353" height="161"/>
+                                                    <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </pickerView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="A6s-rS-VRq" secondAttribute="trailing" id="B6M-FY-zaC"/>
-                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="top" secondItem="TBZ-Xi-9uP" secondAttribute="bottom" constant="20" id="ICo-ku-sdE"/>
-                                                <constraint firstAttribute="bottom" secondItem="A6s-rS-VRq" secondAttribute="bottom" constant="20" id="XXv-oH-OqA"/>
-                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="top" secondItem="2Tr-eF-2nw" secondAttribute="topMargin" id="ZRe-uj-Csc"/>
-                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leading" id="nWY-UO-ptM"/>
-                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leadingMargin" id="tgl-BQ-IRQ"/>
+                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leadingMargin" id="2bX-WP-cCv"/>
+                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="trailing" secondItem="2Tr-eF-2nw" secondAttribute="trailingMargin" id="TaO-b2-IqQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="A6s-rS-VRq" secondAttribute="bottom" constant="20" id="YGs-le-5Jj"/>
+                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="leading" secondItem="2Tr-eF-2nw" secondAttribute="leadingMargin" id="jlx-fR-rGl"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TBZ-Xi-9uP" secondAttribute="trailing" constant="20" symbolic="YES" id="lMo-N5-dLM"/>
+                                                <constraint firstItem="TBZ-Xi-9uP" firstAttribute="top" secondItem="2Tr-eF-2nw" secondAttribute="topMargin" id="sH4-PN-aif"/>
+                                                <constraint firstItem="A6s-rS-VRq" firstAttribute="top" secondItem="TBZ-Xi-9uP" secondAttribute="bottom" constant="5" id="y25-Yt-voI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -180,7 +184,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateSelectionsCell" rowHeight="111" id="sfG-kd-pat" customClass="DateSelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="273" width="393" height="111"/>
+                                        <rect key="frame" x="0.0" y="284" width="393" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sfG-kd-pat" id="7Bz-c9-N2A">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="111"/>
@@ -193,24 +197,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-d3-Foc">
-                                                    <rect key="frame" x="0.0" y="57" width="393" height="36"/>
+                                                    <rect key="frame" x="20" y="42" width="353" height="38"/>
                                                 </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Ek0-d3-Foc" secondAttribute="trailing" id="Ge9-5g-eth"/>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="20" id="QWK-6Z-ZJ9"/>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leading" id="pd5-h9-EDc"/>
-                                                <constraint firstItem="Due-kY-jKL" firstAttribute="top" secondItem="7Bz-c9-N2A" secondAttribute="topMargin" id="saY-zY-6tg"/>
-                                                <constraint firstItem="Due-kY-jKL" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="vGp-9Q-Oj2"/>
+                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="5" id="By9-Qc-z6v"/>
+                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="MYM-Ma-moc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ek0-d3-Foc" secondAttribute="bottom" constant="20" id="fZf-NN-Mw1"/>
+                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="trailing" secondItem="7Bz-c9-N2A" secondAttribute="trailingMargin" id="qP3-qB-bt1"/>
+                                                <constraint firstItem="Due-kY-jKL" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="tRk-ke-NLg"/>
+                                                <constraint firstItem="Due-kY-jKL" firstAttribute="top" secondItem="7Bz-c9-N2A" secondAttribute="topMargin" id="uMq-qY-CTh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="datePicker" destination="Ek0-d3-Foc" id="2Ld-cX-Xcw"/>
+                                            <outlet property="dateSelectionLabel" destination="Due-kY-jKL" id="X15-U1-Z2E"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="110" id="geU-Rp-KJX">
-                                        <rect key="frame" x="0.0" y="384" width="393" height="110"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelerNumCell" rowHeight="110" id="geU-Rp-KJX" customClass="TravelerNumTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="395" width="393" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="geU-Rp-KJX" id="HqU-Jr-sai">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
@@ -233,20 +239,25 @@
                                                 <constraint firstItem="LZj-WY-VEz" firstAttribute="leading" secondItem="HqU-Jr-sai" secondAttribute="leadingMargin" id="1oC-cE-8Hu"/>
                                                 <constraint firstItem="LZj-WY-VEz" firstAttribute="trailing" secondItem="HqU-Jr-sai" secondAttribute="trailingMargin" id="1qN-0w-b12"/>
                                                 <constraint firstItem="LZj-WY-VEz" firstAttribute="top" secondItem="SEu-Dk-FyX" secondAttribute="bottom" constant="20" id="6BK-5p-GD0"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SEu-Dk-FyX" secondAttribute="trailing" constant="20" symbolic="YES" id="Ueh-Sn-Zgu"/>
                                                 <constraint firstItem="SEu-Dk-FyX" firstAttribute="top" secondItem="HqU-Jr-sai" secondAttribute="topMargin" id="ZbD-Vv-fxL"/>
                                                 <constraint firstItem="SEu-Dk-FyX" firstAttribute="leading" secondItem="HqU-Jr-sai" secondAttribute="leadingMargin" id="hRe-gX-uyW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="travelerNumTextField" destination="LZj-WY-VEz" id="zD1-6d-VJh"/>
+                                            <outlet property="travelerNumTextLable" destination="SEu-Dk-FyX" id="k2L-ji-Izl"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchButtonsCell" rowHeight="117" id="kCp-cn-CM6" customClass="SearchButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="494" width="393" height="117"/>
+                                        <rect key="frame" x="0.0" y="505" width="393" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCp-cn-CM6" id="bQY-co-62F">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FD-7D-aIY">
-                                                    <rect key="frame" x="120" y="41" width="153" height="35"/>
+                                                    <rect key="frame" x="140" y="41" width="113" height="35"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                 </button>
@@ -254,10 +265,10 @@
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="leading" secondItem="bQY-co-62F" secondAttribute="leadingMargin" constant="100" id="9wj-xu-9Vu"/>
-                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="top" secondItem="bQY-co-62F" secondAttribute="topMargin" constant="30" id="AHN-c2-hjt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4FD-7D-aIY" secondAttribute="trailing" constant="100" id="EzH-3j-mr1"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4FD-7D-aIY" secondAttribute="bottom" constant="30" id="ZQP-Gj-5Cx"/>
+                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="leading" secondItem="bQY-co-62F" secondAttribute="leadingMargin" constant="120" id="2wu-iW-oK7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4FD-7D-aIY" secondAttribute="bottom" constant="30" id="AtR-Ei-wd2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4FD-7D-aIY" secondAttribute="trailing" constant="120" id="SWO-Wl-bn0"/>
+                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="top" secondItem="bQY-co-62F" secondAttribute="topMargin" constant="30" id="Z0I-zG-eda"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

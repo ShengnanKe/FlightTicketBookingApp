@@ -12,6 +12,7 @@
 		44826DA22BD730410032ACEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44826DA12BD730410032ACEC /* Base */; };
 		44826DA42BD730450032ACEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44826DA32BD730450032ACEC /* Assets.xcassets */; };
 		44826DA72BD730450032ACEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44826DA62BD730450032ACEC /* Base */; };
+		44D020A42BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */; };
 		44D70B8D2BD7FC19005E92B0 /* DestinationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */; };
 		44D70B8F2BD7FC3D005E92B0 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D70B8E2BD7FC3D005E92B0 /* Cities.plist */; };
 		44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B922BD88866005E92B0 /* UserInfoViewController.swift */; };
@@ -30,6 +31,7 @@
 		44826DA32BD730450032ACEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44826DA62BD730450032ACEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44826DA82BD730450032ACEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerNumTableViewCell.swift; sourceTree = "<group>"; };
 		44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchViewController.swift; sourceTree = "<group>"; };
 		44D70B8E2BD7FC3D005E92B0 /* Cities.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		44D70B922BD88866005E92B0 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */,
 				44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */,
 				44D70B962BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift */,
+				44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */,
 				44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */,
 				44D70B8E2BD7FC3D005E92B0 /* Cities.plist */,
 				44D70B922BD88866005E92B0 /* UserInfoViewController.swift */,
@@ -165,6 +168,7 @@
 				44D70B9B2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift in Sources */,
 				44D70B992BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift in Sources */,
 				44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */,
+				44D020A42BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift in Sources */,
 				44D70B9D2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift in Sources */,
 				44826D9D2BD730410032ACEC /* SceneDelegate.swift in Sources */,
 				44D70B972BD8AAE1005E92B0 /* DateSelectionsTableViewCell.swift in Sources */,

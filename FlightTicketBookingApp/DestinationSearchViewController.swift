@@ -48,9 +48,9 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 300.0 // the city picker view takes more space
+            return 250.0 // the city picker view takes more space
         } else if indexPath.section == 1{
-            return 200.0 // the date picker view takes more space
+            return 150.0 // the date picker view takes more space
         }else {
             return 100.0 // The height for all other cells
         }
@@ -65,20 +65,40 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
             case 0:
                 cell?.citySelectionLabel.text = "Origin City"
                 cell?.pickerMode = .origin
-                cell?.cityPickerView.reloadAllComponents()
+                //cell?.cityPickerView.reloadAllComponents()
             case 1:
-                cell?.citySelectionLabel.text = "Destination City"
+                cell?.citySelectionLabel.text = "Destination city"
                 cell?.pickerMode = .destination
-                cell?.cityPickerView.reloadAllComponents()
-                
+                //cell?.cityPickerView.reloadAllComponents()
             default:
-                cell?.citySelectionLabel.text = "Origin City"
-                cell?.cityPickerView.reloadAllComponents()
+                cell?.citySelectionLabel.text = "Origin city"
+                //cell?.cityPickerView.reloadAllComponents()
+            }
+            cell?.cityPickerView.reloadAllComponents()
+            return cell!
+        }
+        else if indexPath.section == 1 { //startDatePickerView / endDatePickerView
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DateSelectionsCell", for: indexPath) as? DateSelectionsTableViewCell
+            switch indexPath.row {
+            case 0:
+                cell?.dateSelectionLabel.text = "Start date"
+                cell?.datePicker.tag = 0
+            case 1:
+                cell?.dateSelectionLabel.text = "End date"
+                cell?.datePicker.tag = 1
+            default:
+                cell?.dateSelectionLabel.text = "Start date"
+                cell?.datePicker.tag = 0
             }
             return cell!
         }
-//        else if indexPath.section == 1 {
-//        }
+        else if indexPath.section == 2 {//textfield: # of travelers
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TravelerNumCell", for: indexPath) as? TravelerNumTableViewCell
+            cell?.travelerNumTextLable.text = "Number of travelers"
+            cell?.travelerNumTextField.text = ""
+            cell?.travelerNumTextField.tag = indexPath.row
+            return cell!
+        }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonsCell", for: indexPath) as? SearchButtonTableViewCell
             cell?.searchButton.setTitle("Search", for: .normal)
@@ -99,6 +119,7 @@ extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return cities[row]
     }
-    
 }
+    
+
 
