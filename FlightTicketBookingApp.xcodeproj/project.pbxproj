@@ -14,6 +14,7 @@
 		44826DA72BD730450032ACEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44826DA62BD730450032ACEC /* Base */; };
 		44D020A42BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */; };
 		44D020A62BDA0C310051C3F4 /* UserGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A52BDA0C310051C3F4 /* UserGenderTableViewCell.swift */; };
+		44D020A82BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A72BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift */; };
 		44D70B8D2BD7FC19005E92B0 /* DestinationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */; };
 		44D70B8F2BD7FC3D005E92B0 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D70B8E2BD7FC3D005E92B0 /* Cities.plist */; };
 		44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B922BD88866005E92B0 /* UserInfoViewController.swift */; };
@@ -34,6 +35,7 @@
 		44826DA82BD730450032ACEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerNumTableViewCell.swift; sourceTree = "<group>"; };
 		44D020A52BDA0C310051C3F4 /* UserGenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderTableViewCell.swift; sourceTree = "<group>"; };
+		44D020A72BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBillingInfoTableViewCell.swift; sourceTree = "<group>"; };
 		44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchViewController.swift; sourceTree = "<group>"; };
 		44D70B8E2BD7FC3D005E92B0 /* Cities.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		44D70B922BD88866005E92B0 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				44D70B922BD88866005E92B0 /* UserInfoViewController.swift */,
 				44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */,
 				44D020A52BDA0C310051C3F4 /* UserGenderTableViewCell.swift */,
+				44D020A72BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift */,
 				44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */,
 			);
 			path = FlightTicketBookingApp;
@@ -170,6 +173,7 @@
 				44D70B952BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift in Sources */,
 				44D70B9B2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift in Sources */,
 				44D020A62BDA0C310051C3F4 /* UserGenderTableViewCell.swift in Sources */,
+				44D020A82BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift in Sources */,
 				44D70B992BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift in Sources */,
 				44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */,
 				44D020A42BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift in Sources */,

@@ -17,7 +17,7 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
         "Email address": "",
         "Phone number": 0,
         "Passport": "",
-        "Gender": true,
+        "Gender": "",
         "Date of birth": 0,
         "Name on card": "",
         "Debit/Credit card number": 0,
@@ -32,10 +32,24 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userInfoTableView.delegate = self
+        userInfoTableView.dataSource = self
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if section == 0 {
+            return 4
+        }
+        else if section == 2{
+            return 9
+        }
+        else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,7 +57,7 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoTextFieldCell", for: indexPath) as?  UserInfoTextFieldTableViewCell
             switch indexPath.row {
             case 0:
-                cell?.formTextFieldLable.text = "First name"// , "Email address", , "Passport"]
+                cell?.formTextFieldLable.text = "First name"
                 cell?.formTextField.text = userInfo["First name"] as? String ?? ""
                 cell?.formTextField.tag = indexPath.row
             case 1:
@@ -63,14 +77,14 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
                 cell?.formTextField.text = userInfo["Passport"] as? String ?? ""
                 cell?.formTextField.tag = indexPath.row
             default:
-                cell?.formTextFieldLable.text = "First name"// , "Email address", "Phone number", "Passport"]
+                cell?.formTextFieldLable.text = "First name"
                 cell?.formTextField.text = userInfo["First name"] as? String ?? ""
                 cell?.formTextField.tag = indexPath.row
             }
             return cell!
         }
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserGenderCell", for: indexPath) as?  UserGenderTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userGenderCell", for: indexPath) as?  UserGenderTableViewCell
             cell?.genderSelectionLabel.text = "Gender"
             cell?.genderSelectionSegment.removeAllSegments()
             cell?.genderSelectionSegment.insertSegment(withTitle: "Male", at: 0, animated: false)
@@ -95,6 +109,56 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
             
             cell?.genderSelectionSegment.addTarget(self, action: #selector(genderSegmentChanged(_:)), for: .valueChanged)
             
+            return cell!
+        }
+        if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userBillingInfoTextFieldCell", for: indexPath) as?  UserBillingInfoTableViewCell
+            switch indexPath.row {
+            case 0:
+                cell?.formTextFieldLable.text = "Date of birth"
+                cell?.formTextField.text = userInfo["Date of birth"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 1:
+                cell?.formTextFieldLable.text =  "Name on card"
+                cell?.formTextField.text = userInfo[ "Name on card"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 2:
+                cell?.formTextFieldLable.text = "Debit/Credit card number"
+                cell?.formTextField.text = userInfo["Debit/Credit card number"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 3:
+                cell?.formTextFieldLable.text = "Expiration date"
+                cell?.formTextField.text = userInfo["Expiration date"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 4:
+                cell?.formTextFieldLable.text = "Security code"
+                cell?.formTextField.text = userInfo["Security code"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 5:
+                cell?.formTextFieldLable.text = "Country/Territory"
+                cell?.formTextField.text = userInfo["Country/Territory"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 6:
+                cell?.formTextFieldLable.text = "Billing address"
+                cell?.formTextField.text = userInfo["Billing address"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 7:
+                cell?.formTextFieldLable.text = "City"
+                cell?.formTextField.text = userInfo["City"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 8:
+                cell?.formTextFieldLable.text = "State"
+                cell?.formTextField.text = userInfo["State"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            case 9:
+                cell?.formTextFieldLable.text = "Zipcode"
+                cell?.formTextField.text = userInfo["Zipcode"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            default:
+                cell?.formTextFieldLable.text = "First name"
+                cell?.formTextField.text = userInfo["First name"] as? String ?? ""
+                cell?.formTextField.tag = indexPath.row
+            }
             return cell!
         }
         else{
