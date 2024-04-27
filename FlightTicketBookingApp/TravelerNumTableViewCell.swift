@@ -10,7 +10,8 @@ import UIKit
 class TravelerNumTableViewCell: UITableViewCell {
     
     @IBOutlet weak var travelerNumTextLable: UILabel!
-    @IBOutlet weak var travelerNumTextField: UITextField!
+    @IBOutlet weak var travelerNumSlider: UISlider!
+    @IBOutlet weak var travelerNumDisplayLabel: UILabel! 
 
     override func awakeFromNib() {
         super.awakeFromNib()

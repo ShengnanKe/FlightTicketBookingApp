@@ -14,6 +14,13 @@ import UIKit
 
 class DestinationSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var userInfo: [String: Any] = [
+        "Origin City": "",
+        "Destination city": "",
+        "Start date": "",
+        "End date": "",
+        "Number of travelers": 0
+    ]
     @IBOutlet weak var myTableView: UITableView!
     var cities = [String]()
     
@@ -56,6 +63,14 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         }
     }
     
+    @objc func sliderValueChanged(_ sender: UISlider) {
+        if let cell = sender.superview?.superview as? TravelerNumTableViewCell {
+            let newValue = Int(sender.value)
+            cell.travelerNumDisplayLabel.text = "Number of travelers - \(newValue)"
+            userInfo["Number of travelers"] = newValue
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CitySelectionsCell", for: indexPath) as? CitySelectionsTableViewCell
@@ -94,9 +109,13 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         }
         else if indexPath.section == 2 {//textfield: # of travelers
             let cell = tableView.dequeueReusableCell(withIdentifier: "TravelerNumCell", for: indexPath) as? TravelerNumTableViewCell
-            cell?.travelerNumTextLable.text = "Number of travelers"
-            cell?.travelerNumTextField.text = ""
-            cell?.travelerNumTextField.tag = indexPath.row
+            cell?.travelerNumTextLable.text = "Number of travelers" //travelerNumSlider
+            cell?.travelerNumSlider.value = 1 // defalut as 1
+            cell?.travelerNumSlider.minimumValue = 1
+            cell?.travelerNumSlider.maximumValue = 25
+            
+            cell?.travelerNumSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+            
             return cell!
         }
         else{
@@ -106,6 +125,8 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         }
     }
 }
+
+
 
 extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -120,6 +141,6 @@ extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDat
         return cities[row]
     }
 }
-    
+
 
 

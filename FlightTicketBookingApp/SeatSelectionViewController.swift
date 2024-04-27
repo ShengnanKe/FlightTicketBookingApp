@@ -25,8 +25,7 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         seatSelectionCollectionView.delegate = self
         seatSelectionCollectionView.dataSource = self
         seatSelectionCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
-        // Do any additional setup after loading the view.
+  
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -60,12 +59,12 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: UICollectionViewCell
-        if indexPath.section == 0 {
-            let unselectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UnselectedSeatCell", for: indexPath) as! UnselectedSeatCollectionViewCell
-            unselectedCell.unSelectedSeatLable.text = "Row - \(indexPath.row)"
-            cell = unselectedCell
+        if indexPath.section == 0 { // first class
+            let selectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSeatCell", for: indexPath) as! SelectedSeatCollectionViewCell
+            selectedCell.selectedSeatLable.text = "Row - \(indexPath.row)"
+            cell = selectedCell
         }
-        else{
+        else{ //econ class
             let selectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSeatCell", for: indexPath) as! SelectedSeatCollectionViewCell
             selectedCell.selectedSeatLable.text = "Row - \(indexPath.row)"
             cell = selectedCell
