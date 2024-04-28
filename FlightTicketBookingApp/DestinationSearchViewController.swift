@@ -21,6 +21,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         "End date": "",
         "Number of travelers": 0
     ]
+    
     @IBOutlet weak var myTableView: UITableView!
     var cities = [String]()
     
@@ -107,7 +108,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
             }
             return cell!
         }
-        else if indexPath.section == 2 {//textfield: # of travelers
+        else if indexPath.section == 2 { //textfield: # of travelers
             let cell = tableView.dequeueReusableCell(withIdentifier: "TravelerNumCell", for: indexPath) as? TravelerNumTableViewCell
             cell?.travelerNumTextLable.text = "Number of travelers" //travelerNumSlider
             cell?.travelerNumSlider.value = 1 // defalut as 1
@@ -120,13 +121,11 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonsCell", for: indexPath) as? SearchButtonTableViewCell
-            cell?.searchButton.setTitle("Search", for: .normal)
+            cell?.searchButton.setTitle("Select Seat(s)", for: .normal)
             return cell!
         }
     }
 }
-
-
 
 extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

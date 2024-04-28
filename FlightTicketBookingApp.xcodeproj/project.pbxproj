@@ -25,6 +25,7 @@
 		44D70B992BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */; };
 		44D70B9B2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */; };
 		44D70B9D2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */; };
+		44E1FBA42BDC9A4B0044404B /* BookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E1FBA32BDC9A4A0044404B /* BookingTableViewCell.swift */; };
 		44FFBC932BDC8F6D008FAD84 /* ListOfBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FFBC922BDC8F6D008FAD84 /* ListOfBookingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoButtonTableViewCell.swift; sourceTree = "<group>"; };
 		44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
+		44E1FBA32BDC9A4A0044404B /* BookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableViewCell.swift; sourceTree = "<group>"; };
 		44FFBC922BDC8F6D008FAD84 /* ListOfBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBookingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				44826DA32BD730450032ACEC /* Assets.xcassets */,
 				44826DA52BD730450032ACEC /* LaunchScreen.storyboard */,
 				44FFBC922BDC8F6D008FAD84 /* ListOfBookingViewController.swift */,
+				44E1FBA32BDC9A4A0044404B /* BookingTableViewCell.swift */,
 				44826DA82BD730450032ACEC /* Info.plist */,
 				44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */,
 				44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */,
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44826D9B2BD730410032ACEC /* AppDelegate.swift in Sources */,
+				44E1FBA42BDC9A4B0044404B /* BookingTableViewCell.swift in Sources */,
 				44D020AC2BDA1D070051C3F4 /* SeatSelectionViewController.swift in Sources */,
 				44FFBC932BDC8F6D008FAD84 /* ListOfBookingViewController.swift in Sources */,
 				44D70B952BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift in Sources */,
