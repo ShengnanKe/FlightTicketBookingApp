@@ -94,7 +94,6 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         return []
     }
 
-    
     func saveBookings() {
         let defaults = UserDefaults.standard
         if let bookingsData = try? JSONEncoder().encode(bookings) {
@@ -103,7 +102,6 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
             print("Failed to encode bookings")
         }
     }
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
