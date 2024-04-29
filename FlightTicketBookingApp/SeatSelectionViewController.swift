@@ -19,24 +19,19 @@ class SeatManager { // for better management on the seats avaliablity
         if let data = UserDefaults.standard.data(forKey: "SeatsAvailability"),
            let availability = try? JSONDecoder().decode([String: Bool].self, from: data) {
             seatsAvailability = availability
+            print("Seats loaded: \(seatsAvailability)")
+        } else {
+            print("Failed to load seat availability data")
         }
     }
     
     func saveSeats() {
         if let data = try? JSONEncoder().encode(seatsAvailability) {
             UserDefaults.standard.set(data, forKey: "SeatsAvailability")
+            print("Seats successfully saved")
+        } else {
+            print("Failed to encode seat availability data")
         }
-    }
-    
-    func updateSeats(forBooking booking: Booking, isBookingDeleted: Bool = false) {
-        for (seat, isSelected) in booking.selectedSeats {
-            if isBookingDeleted {
-                seatsAvailability[seat] = false
-            } else {
-                seatsAvailability[seat] = isSelected
-            }
-        }
-        saveSeats()
     }
     
     func loadMaximumSelectableSeats() -> Int {
@@ -47,6 +42,18 @@ class SeatManager { // for better management on the seats avaliablity
         }
         return 0 // Default or error case
     }
+    
+    func updateSeats(forBooking booking: Booking, isBookingDeleted: Bool = false) {
+        for (seat, isSelected) in booking.selectedSeats {
+            if isBookingDeleted {
+                seatsAvailability[seat] = false // If booking is deleted, mark seats as available
+            } else {
+                seatsAvailability[seat] = isSelected // Update the current booking info for the update function
+            }
+        }
+        saveSeats()
+    }
+
     
     
 }
@@ -72,11 +79,17 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         seatSelectionCollectionView.delegate = self
         seatSelectionCollectionView.dataSource = self
         seatSelectionCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
         // to allow de-select a cell action, I used
         seatSelectionCollectionView.allowsMultipleSelection = true
         
         self.maxSelectableSeats = SeatManager.shared.loadMaximumSelectableSeats()
+        SeatManager.shared.loadSeats()
+        
+        self.seatsAvailability = SeatManager.shared.seatsAvailability
+        
+        // needed: to show updates with seats that have been selected
+        seatSelectionCollectionView.reloadData()
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -115,22 +128,33 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         
         let seatIndex = "\(indexPath.section)-\(indexPath.row)" // 0:"First Class" or 1:"Economy Class" and it's seat #
         
-        // check and see if this seat is selected or not, and set default to fasle
-        let isCurrentlySelected = seatsAvailability[seatIndex] ?? false
+        let isCurrentlySelected = seatsAvailability[seatIndex] ?? false // check and see if this seat is selected or not, and set default to fasle
         
-        // to change the status of the current seat
+        // to change the status of the current seat and print in the concole for confirmation
         if isCurrentlySelected {
-            // If already selected, deselect it
             seatsAvailability[seatIndex] = false
             collectionView.deselectItem(at: indexPath, animated: true)
             print("De Select - \(indexPath.section)-\(indexPath.row)")
         } else {
-            // If not selected, select it
-            seatsAvailability[seatIndex] = true
-            print("Select - \(indexPath.section)-\(indexPath.row)")
+            // Check if the maximum number of selectable seats has been reached
+            let currentSelectedCount = seatsAvailability.values.filter { $0 }.count
+            if currentSelectedCount < maxSelectableSeats {
+                seatsAvailability[seatIndex] = true
+                print("Select - \(indexPath.section)-\(indexPath.row)")
+            } else {
+                print("Maximum seat selection limit reached.")
+                return
+            }
         }
         
+        SeatManager.shared.seatsAvailability = seatsAvailability
+        SeatManager.shared.saveSeats()
         collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func saveSeatsAvailability() { // update SeatsAvailability as it changes
+        SeatManager.shared.seatsAvailability = seatsAvailability
+        SeatManager.shared.saveSeats()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -178,10 +202,6 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all seatsAvailability into the seatsAvailability dictionary
         saveSeatsAvailability()
         printCurrentSeatSelections()
-    }
-    
-    func saveSeatsAvailability() {
-        UserDefaults.standard.set(seatsAvailability, forKey: "seatsAvailability")
     }
     
     func printCurrentSeatSelections() {

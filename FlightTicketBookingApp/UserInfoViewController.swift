@@ -165,6 +165,8 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all those info into the userBookingInfo dictionary
+        view.endEditing(true) // for the same reason: the zipcode? always not saved properly.
+        
         saveUserBillingInfo()
         print(userBillingInfo)
     }

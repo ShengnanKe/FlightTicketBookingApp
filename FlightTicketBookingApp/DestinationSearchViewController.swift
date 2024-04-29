@@ -6,7 +6,7 @@
 //
 /*
  originCityPickerView / destinationCityPickerView
- departureDatePickerView / returnDatePickerView
+ departureDate textfield / returnDate textfield
  textfield: # of travelers
  save all userinput into the userBookingInfo dictionary and make people able to have access to edit delete and display on another view controller
  
@@ -14,8 +14,8 @@
  struct UserBookingInfo: Codable {
  var originCity: String
  var destinationCity: String
- var departureDate: Date
- var returnDate: Date
+ var departureDate: String
+ var returnDate: String
  var numberOfTravelers: Int
  }
  
@@ -58,7 +58,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 || section == 1 { // for the originCityPickerView/destinationCityPickerView and DepartureDatePickerView/returnDatePickerView
+        if section == 0 || section == 1 { // for the originCityPickerView/destinationCityPickerView and DepartureDate textfield /returnDate textfield
             return 2
         }
         else {
@@ -70,7 +70,7 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         if indexPath.section == 0 {
             return 230.0 // the city picker view takes more space
         } else if indexPath.section == 1{
-            return 120.0 // the date picker view takes more space
+            return 110.0 // the textfield takes more space -> swiched format
         }else {
             return 100.0 // The height for all other cells
         }
@@ -94,18 +94,22 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         }
         else if indexPath.section == 1 { // DepartureDate textfield / returnDate textfield
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateSelectionsCell", for: indexPath) as? DateSelectionsTableViewCell
+            cell?.dateTextfield.delegate = self // for textfield delegate
             switch indexPath.row {
             case 0:
                 cell?.dateSelectionLabel.text = "Departure date"
                 cell?.dateTextfield.tag = 0
+                cell?.dateTextfield.text = bookingInfo.departureDate
             case 1:
                 cell?.dateSelectionLabel.text = "Return date"
                 cell?.dateTextfield.tag = 1
+                cell?.dateTextfield.text = bookingInfo.returnDate
             default:
                 cell?.dateSelectionLabel.text = "Return date"
                 cell?.dateTextfield.tag = 1
+                cell?.dateTextfield.text = bookingInfo.returnDate
             }
-            cell?.dateTextfield.delegate = self // for textfield delegate
+            
             return cell ?? UITableViewCell()
         }
         else if indexPath.section == 2 { //textfield: # of travelers
@@ -122,13 +126,13 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.tag == 0 { // departure date
             bookingInfo.departureDate = textField.text ?? ""
-            print("Departure date set to: \(textField.text ?? "invalid input")") //check
-        } 
-        else if textField.tag == 1 { // return date
+            print("Departure date set to: \(textField.text ?? "invalid input")")
+        } else if textField.tag == 1 { // return date
             bookingInfo.returnDate = textField.text ?? ""
             print("Return date set to: \(textField.text ?? "invalid input")")
         }
     }
+    
     
     @IBAction func numberOfTravelersChanged(_ sender: UISlider) {
         bookingInfo.numberOfTravelers = Int(sender.value)
@@ -136,6 +140,8 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all those info-userBookingInfo struct
+        
+        view.endEditing(true) // needed cause the Return date wasn't saved properly
         saveBookingInfo()
         printCurrentBookingInfo()
         

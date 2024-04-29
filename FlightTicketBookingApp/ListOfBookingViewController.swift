@@ -75,19 +75,28 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
     
     func loadBookings() -> [Booking] {
         let defaults = UserDefaults.standard
-        if let savedBookingsData = defaults.data(forKey: "Bookings"),
-           let savedBookings = try? JSONDecoder().decode([Booking].self, from: savedBookingsData) {
-            return savedBookings
+        if let savedBookingsData = defaults.data(forKey: "Bookings") {
+            do {
+                let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
+                return savedBookings
+            } catch {
+                print("Failed to decode bookings: \(error)")
+            }
         }
+        print("No bookings found in UserDefaults.")
         return []
     }
+
     
     func saveBookings() {
         let defaults = UserDefaults.standard
         if let bookingsData = try? JSONEncoder().encode(bookings) {
             defaults.set(bookingsData, forKey: "Bookings")
+        } else {
+            print("Failed to encode bookings")
         }
     }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -134,12 +143,14 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         guard indexPath.section == 0 else { return nil } // only the bookings cell has delete and update
         
         // Delete
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in let bookingToDelete = self?.bookings[indexPath.row]
             
-            self.bookings.remove(at: indexPath.row) // delete
-            self.saveBookings() // save the updated list
+            SeatManager.shared.updateSeats(forBooking: bookingToDelete, isBookingDeleted: true)
+            self?.bookings.remove(at: indexPath.row)
+            self?.saveBookings() // save the updated list
             tableView.deleteRows(at: [indexPath], with: .automatic) // reflect this change with animation
             completionHandler(true)
+            
         }
         
         // Update
