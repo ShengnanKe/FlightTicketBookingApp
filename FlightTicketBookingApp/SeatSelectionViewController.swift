@@ -37,7 +37,7 @@ class SeatManager { // for better management on the seats avaliablity
     func loadMaximumSelectableSeats() -> Int {
         if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo"),
            let bookingInfo = try? JSONDecoder().decode(UserBookingInfo.self, from: bookingInfoData) {
-            // Assuming `numberOfTravelers` determines the max seats selectable
+            // based on numberOfTravelers to limit how many seat the user can select
             return bookingInfo.numberOfTravelers
         }
         return 0 // Default or error case
@@ -53,9 +53,6 @@ class SeatManager { // for better management on the seats avaliablity
         }
         saveSeats()
     }
-
-    
-    
 }
 
 
@@ -199,10 +196,29 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         
         return selectedCell    }
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all seatsAvailability into the seatsAvailability dictionary
-        saveSeatsAvailability()
-        printCurrentSeatSelections()
+    func saveSelectedSeats() {
+        // Convert the seatsAvailability dictionary to data and save it to UserDefaults
+        let defaults = UserDefaults.standard
+        if let data = try? JSONEncoder().encode(seatsAvailability) {
+            defaults.set(data, forKey: "SelectedSeats")
+            print("Selected seats saved successfully.")
+        } else {
+            print("Failed to save selected seats.")
+        }
     }
+
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all seatsAvailability into the seatsAvailability dictionary and save the selected seats
+        
+        saveSeatsAvailability()
+        
+        saveSelectedSeats()
+        
+        printCurrentSeatSelections()
+        
+        print("Seat selections saved successfully.")
+    }
+    
     
     func printCurrentSeatSelections() {
         for (seatIndex, isSelected) in seatsAvailability.sorted(by: { $0.key < $1.key }) {

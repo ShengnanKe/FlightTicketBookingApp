@@ -68,16 +68,23 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         print("called printSavedBookings()")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        bookings = loadBookings()
+        listOfBookingTableView.reloadData()
+        print("View will appear and bookings are reloaded.")
+    }
+
     // save list of bookings
     var bookings: [Booking] = []
     
     // load booking info
     
     func loadBookings() -> [Booking] {
-        let defaults = UserDefaults.standard
-        if let savedBookingsData = defaults.data(forKey: "Bookings") {
+        if let savedBookingsData = UserDefaults.standard.data(forKey: "Bookings") {
             do {
                 let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
+                print("Loaded \(savedBookings.count) bookings from UserDefaults.")
                 return savedBookings
             } catch {
                 print("Failed to decode bookings: \(error)")
@@ -143,13 +150,18 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         guard indexPath.section == 0 else { return nil } // only the bookings cell has delete and update
         
         // Delete
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in let bookingToDelete = self?.bookings[indexPath.row]
-            
-            SeatManager.shared.updateSeats(forBooking: bookingToDelete, isBookingDeleted: true)
-            self?.bookings.remove(at: indexPath.row)
-            self?.saveBookings() // save the updated list
-            tableView.deleteRows(at: [indexPath], with: .automatic) // reflect this change with animation
-            completionHandler(true)
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+            if let bookingToDelete = self?.bookings[indexPath.row]{
+                
+                SeatManager.shared.updateSeats(forBooking: bookingToDelete, isBookingDeleted: true)
+                self?.bookings.remove(at: indexPath.row)
+                self?.saveBookings() // save the updated list
+                tableView.deleteRows(at: [indexPath], with: .automatic) // reflect this change with animation
+                completionHandler(true)
+            }
+            else{
+                completionHandler(false)
+            }
             
         }
         
@@ -177,9 +189,9 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
             do {
                 let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
                 for booking in savedBookings {
-                    print("Billing Info: \(booking.billingInfo)")
                     print("Booking Info: \(booking.bookingInfo)")
                     print("Selected Seats: \(booking.selectedSeats)")
+                    print("Billing Info: \(booking.billingInfo)")
                 }
             } catch {
                 print("Failed to decode bookings: \(error)")

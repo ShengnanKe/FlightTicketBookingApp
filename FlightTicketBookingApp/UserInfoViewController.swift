@@ -168,29 +168,32 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
         view.endEditing(true) // for the same reason: the zipcode? always not saved properly.
         
         saveUserBillingInfo()
-        print(userBillingInfo)
+        
     }
     
     func saveUserBillingInfo() {
-        // Debug: Print out the raw data to see if it's present and correctly formatted
+        
+        var bookingInfo: UserBookingInfo?
+        var selectedSeats: [String: Bool]?
+        
+        // Print out and see if BookingInfoData is being stored in the userdefaults
         if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo") {
-            print("BookingInfoData: \(bookingInfoData)")
+            // print("BookingInfoData: \(bookingInfoData)")
             do {
                 let bookingInfo = try JSONDecoder().decode(UserBookingInfo.self, from: bookingInfoData)
-                // Proceed with the rest of your logic...
+                print("BookingInfoData: \(bookingInfoData)")
             } catch {
-                print("Failed to decode booking info: \(error)")
+                print("decode booking info failed!!! \(error)")
             }
         } else {
-            print("BookingInfo data not found in UserDefaults.")
+            print("BookingInfo -> data not found in UserDefaults.")
         }
         
-        // Do the same for selected seats
-        if let selectedSeatsData = UserDefaults.standard.data(forKey: "SelectedSeats") {
-            print("SelectedSeatsData: \(selectedSeatsData)")
+        // check for selected seats
+        if let selectedSeatsData = UserDefaults.standard.data(forKey: "SelectedSeats") { // not "SeatsAvailability"
             do {
-                let selectedSeats = try JSONDecoder().decode([String: Bool].self, from: selectedSeatsData)
-                // Proceed with the rest of your logic...
+                selectedSeats = try JSONDecoder().decode([String: Bool].self, from: selectedSeatsData)
+                print("SelectedSeatsData: \(selectedSeatsData)")
             } catch {
                 print("Failed to decode selected seats: \(error)")
             }
@@ -198,23 +201,55 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
             print("SelectedSeats data not found in UserDefaults.")
         }
         
-        // Combine everything to save into a Booking struct and save
-        // ...
+        // finally the combination
+        if let bookingInfo = bookingInfo, let selectedSeats = selectedSeats {
+            let newBooking = Booking(billingInfo: userBillingInfo, bookingInfo: bookingInfo, selectedSeats: selectedSeats)
+            var bookings = loadBookings()
+            bookings.append(newBooking)
+            saveBookings(bookings)
+            print("save New booking")
+        } else {
+            print("Cannot save New booking")
+        }
+        
+        
+        if let billingInfoData = try? JSONEncoder().encode(userBillingInfo) {
+            UserDefaults.standard.set(billingInfoData, forKey: "UserBillingInfo")
+            print("UserBillingInfo saved.")
+        }
+        else {
+            print("Failed to encode UserBillingInfo.")
+        }
+        
     }
     
     func loadBookings() -> [Booking] {
         let defaults = UserDefaults.standard
-        if let savedBookingsData = defaults.data(forKey: "Bookings"),
-           let savedBookings = try? JSONDecoder().decode([Booking].self, from: savedBookingsData) {
-            return savedBookings
+        if let savedBookingsData = defaults.data(forKey: "Bookings"){
+            do {
+                let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
+                return savedBookings
+            } catch {
+                print("Failed to decode bookings: \(error)")
+            }
         }
+        print("No bookings found in UserDefaults.")
         return []
     }
     
     func saveBookings(_ bookings: [Booking]) {
+        print("start saving booking info")
         let defaults = UserDefaults.standard
         if let bookingsData = try? JSONEncoder().encode(bookings) {
             defaults.set(bookingsData, forKey: "Bookings")
+            print("Bookings saved successfully.")
+            if let _ = defaults.data(forKey: "Bookings") {
+                print("Booking data is indeed saved.")
+            } else {
+                print("Booking data is not saved.")
+            }
+        } else {
+            print("Failed to encode bookings.")
         }
     }
 }
