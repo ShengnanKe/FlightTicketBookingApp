@@ -9,7 +9,8 @@ import UIKit
 
 class SelectedSeatCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var selectedSeatLable: UILabel!
+    @IBOutlet weak var selectedSeatLabel: UILabel!
     @IBOutlet weak var selectedSeatImage: UIImageView!
     
 }
+

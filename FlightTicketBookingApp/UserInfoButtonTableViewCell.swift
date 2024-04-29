@@ -11,6 +11,9 @@ class UserInfoButtonTableViewCell: UITableViewCell {
     
     @IBOutlet weak var submitButton: UIButton!
     //@IBOutlet weak var showUserInfoButton: UIButton!
+    
+    // constraint setup 还有问题
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

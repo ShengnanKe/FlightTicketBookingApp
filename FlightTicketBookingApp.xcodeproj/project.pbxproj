@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446CA6FD2BDE0C5B00282626 /* AddBookingButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446CA6FC2BDE0C5B00282626 /* AddBookingButtonTableViewCell.swift */; };
 		44826D9B2BD730410032ACEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44826D9A2BD730410032ACEC /* AppDelegate.swift */; };
 		44826D9D2BD730410032ACEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44826D9C2BD730410032ACEC /* SceneDelegate.swift */; };
 		44826DA22BD730410032ACEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44826DA12BD730410032ACEC /* Base */; };
@@ -14,8 +15,6 @@
 		44826DA72BD730450032ACEC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44826DA62BD730450032ACEC /* Base */; };
 		44AC528B2BDA32E90051A70F /* SelectedSeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AC528A2BDA32E90051A70F /* SelectedSeatCollectionViewCell.swift */; };
 		44D020A42BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */; };
-		44D020A62BDA0C310051C3F4 /* UserGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A52BDA0C310051C3F4 /* UserGenderTableViewCell.swift */; };
-		44D020A82BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020A72BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift */; };
 		44D020AC2BDA1D070051C3F4 /* SeatSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D020AB2BDA1D070051C3F4 /* SeatSelectionViewController.swift */; };
 		44D70B8D2BD7FC19005E92B0 /* DestinationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */; };
 		44D70B8F2BD7FC3D005E92B0 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44D70B8E2BD7FC3D005E92B0 /* Cities.plist */; };
@@ -30,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		446CA6FC2BDE0C5B00282626 /* AddBookingButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookingButtonTableViewCell.swift; sourceTree = "<group>"; };
 		44826D972BD730410032ACEC /* FlightTicketBookingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTicketBookingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44826D9A2BD730410032ACEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44826D9C2BD730410032ACEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,8 +39,6 @@
 		44826DA82BD730450032ACEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44AC528A2BDA32E90051A70F /* SelectedSeatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSeatCollectionViewCell.swift; sourceTree = "<group>"; };
 		44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerNumTableViewCell.swift; sourceTree = "<group>"; };
-		44D020A52BDA0C310051C3F4 /* UserGenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderTableViewCell.swift; sourceTree = "<group>"; };
-		44D020A72BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBillingInfoTableViewCell.swift; sourceTree = "<group>"; };
 		44D020AB2BDA1D070051C3F4 /* SeatSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatSelectionViewController.swift; sourceTree = "<group>"; };
 		44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchViewController.swift; sourceTree = "<group>"; };
 		44D70B8E2BD7FC3D005E92B0 /* Cities.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
@@ -86,11 +84,11 @@
 			children = (
 				44826D9A2BD730410032ACEC /* AppDelegate.swift */,
 				44826D9C2BD730410032ACEC /* SceneDelegate.swift */,
-				44826DA02BD730410032ACEC /* Main.storyboard */,
 				44826DA32BD730450032ACEC /* Assets.xcassets */,
 				44826DA52BD730450032ACEC /* LaunchScreen.storyboard */,
 				44FFBC922BDC8F6D008FAD84 /* ListOfBookingViewController.swift */,
 				44E1FBA32BDC9A4A0044404B /* BookingTableViewCell.swift */,
+				446CA6FC2BDE0C5B00282626 /* AddBookingButtonTableViewCell.swift */,
 				44826DA82BD730450032ACEC /* Info.plist */,
 				44D70B8C2BD7FC19005E92B0 /* DestinationSearchViewController.swift */,
 				44D70B942BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift */,
@@ -98,13 +96,12 @@
 				44D020A32BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift */,
 				44D70B9C2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift */,
 				44D70B8E2BD7FC3D005E92B0 /* Cities.plist */,
-				44D70B922BD88866005E92B0 /* UserInfoViewController.swift */,
-				44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */,
-				44D020A52BDA0C310051C3F4 /* UserGenderTableViewCell.swift */,
-				44D020A72BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift */,
-				44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */,
 				44D020AB2BDA1D070051C3F4 /* SeatSelectionViewController.swift */,
 				44AC528A2BDA32E90051A70F /* SelectedSeatCollectionViewCell.swift */,
+				44826DA02BD730410032ACEC /* Main.storyboard */,
+				44D70B922BD88866005E92B0 /* UserInfoViewController.swift */,
+				44D70B982BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift */,
+				44D70B9A2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift */,
 			);
 			path = FlightTicketBookingApp;
 			sourceTree = "<group>";
@@ -187,11 +184,10 @@
 				44FFBC932BDC8F6D008FAD84 /* ListOfBookingViewController.swift in Sources */,
 				44D70B952BD8A11D005E92B0 /* CitySelectionsTableViewCell.swift in Sources */,
 				44D70B9B2BD8D94D005E92B0 /* UserInfoButtonTableViewCell.swift in Sources */,
-				44D020A62BDA0C310051C3F4 /* UserGenderTableViewCell.swift in Sources */,
-				44D020A82BDA16BF0051C3F4 /* UserBillingInfoTableViewCell.swift in Sources */,
 				44D70B992BD8D6EC005E92B0 /* UserInfoTextFieldTableViewCell.swift in Sources */,
 				44AC528B2BDA32E90051A70F /* SelectedSeatCollectionViewCell.swift in Sources */,
 				44D70B932BD88866005E92B0 /* UserInfoViewController.swift in Sources */,
+				446CA6FD2BDE0C5B00282626 /* AddBookingButtonTableViewCell.swift in Sources */,
 				44D020A42BD9FAD00051C3F4 /* TravelerNumTableViewCell.swift in Sources */,
 				44D70B9D2BD8DA45005E92B0 /* SearchButtonTableViewCell.swift in Sources */,
 				44826D9D2BD730410032ACEC /* SceneDelegate.swift in Sources */,

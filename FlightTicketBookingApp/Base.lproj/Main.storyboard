@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5WE-my-LRq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i35-a6-x4D">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="zug-AV-XRW" customClass="UserInfoViewController" customModule="FlightTicketBookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jcp-ae-1Jl">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T1p-fb-7G0">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoTextFieldCell" rowHeight="115" id="6AC-fW-aCu" customClass="UserInfoTextFieldTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -57,101 +57,33 @@
                                             <outlet property="formTextFieldLable" destination="jJi-93-9KE" id="uci-za-nZk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userGenderCell" rowHeight="119" id="1tx-By-UQ0" customClass="UserGenderTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="165" width="393" height="119"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1tx-By-UQ0" id="w7h-wg-cBY">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="119"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vr-LS-xhh">
-                                                    <rect key="frame" x="20" y="11" width="54" height="26"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sbA-T5-Uti">
-                                                    <rect key="frame" x="20" y="47" width="131" height="32"/>
-                                                    <segments>
-                                                        <segment title="First"/>
-                                                        <segment title="Second"/>
-                                                    </segments>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <constraints>
-                                                <constraint firstItem="sbA-T5-Uti" firstAttribute="top" secondItem="8vr-LS-xhh" secondAttribute="bottom" constant="10" id="EMY-CD-7o4"/>
-                                                <constraint firstItem="sbA-T5-Uti" firstAttribute="leading" secondItem="w7h-wg-cBY" secondAttribute="leadingMargin" id="M0e-Fu-LUb"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="sbA-T5-Uti" secondAttribute="bottom" constant="30" id="hzD-o8-cVh"/>
-                                                <constraint firstItem="8vr-LS-xhh" firstAttribute="leading" secondItem="w7h-wg-cBY" secondAttribute="leadingMargin" id="kkv-e1-jDY"/>
-                                                <constraint firstItem="8vr-LS-xhh" firstAttribute="top" secondItem="w7h-wg-cBY" secondAttribute="topMargin" id="oKo-8h-gCx"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="genderSelectionLabel" destination="8vr-LS-xhh" id="g6K-EM-vdX"/>
-                                            <outlet property="genderSelectionSegment" destination="sbA-T5-Uti" id="ulc-lt-oy7"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userBillingInfoTextFieldCell" rowHeight="115" id="PfU-g8-Xiy" customClass="UserBillingInfoTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="284" width="393" height="115"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PfU-g8-Xiy" id="M4r-tn-iCm">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="115"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zev-eJ-pmt">
-                                                    <rect key="frame" x="20" y="11" width="54" height="26"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6BH-Ot-VaS">
-                                                    <rect key="frame" x="20" y="47" width="353" height="37"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <constraints>
-                                                <constraint firstItem="zev-eJ-pmt" firstAttribute="top" secondItem="M4r-tn-iCm" secondAttribute="topMargin" id="6UH-jQ-Nuq"/>
-                                                <constraint firstItem="6BH-Ot-VaS" firstAttribute="leading" secondItem="M4r-tn-iCm" secondAttribute="leadingMargin" id="KG7-8M-YPQ"/>
-                                                <constraint firstItem="zev-eJ-pmt" firstAttribute="leading" secondItem="M4r-tn-iCm" secondAttribute="leadingMargin" id="aJ1-5X-QLF"/>
-                                                <constraint firstItem="6BH-Ot-VaS" firstAttribute="top" secondItem="zev-eJ-pmt" secondAttribute="bottom" constant="10" id="asD-KG-F2q"/>
-                                                <constraint firstItem="6BH-Ot-VaS" firstAttribute="trailing" secondItem="M4r-tn-iCm" secondAttribute="trailingMargin" id="kEL-lP-hgt"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="6BH-Ot-VaS" secondAttribute="bottom" constant="20" id="o4V-sE-pto"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="formTextField" destination="6BH-Ot-VaS" id="Ka4-y4-Bny"/>
-                                            <outlet property="formTextFieldLable" destination="zev-eJ-pmt" id="MYT-Do-KOf"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonsCell" rowHeight="99" id="xjK-zJ-HT5" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="399" width="393" height="99"/>
+                                        <rect key="frame" x="0.0" y="165" width="393" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xjK-zJ-HT5" id="Owe-bP-qmt" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-pL-tZe">
-                                                    <rect key="frame" x="140" y="51" width="113" height="0.0"/>
-                                                    <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
-                                                    <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auA-PM-S3w">
+                                                    <rect key="frame" x="70" y="31" width="253" height="37"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                                    <connections>
+                                                        <action selector="saveButtonTapped:" destination="zug-AV-XRW" eventType="touchUpInside" id="zyI-uo-Ycm"/>
+                                                        <segue destination="yev-f8-0sB" kind="show" id="ora-E0-HQ5"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="RXG-pL-tZe" secondAttribute="bottom" constant="40" id="TBw-Om-DXf"/>
-                                                <constraint firstItem="RXG-pL-tZe" firstAttribute="top" secondItem="Owe-bP-qmt" secondAttribute="topMargin" constant="40" id="Tcd-Di-qvP"/>
-                                                <constraint firstItem="RXG-pL-tZe" firstAttribute="leading" secondItem="Owe-bP-qmt" secondAttribute="leadingMargin" constant="120" id="bOy-34-1Fa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="RXG-pL-tZe" secondAttribute="trailing" constant="120" id="bvK-PM-FA2"/>
+                                                <constraint firstItem="auA-PM-S3w" firstAttribute="leading" secondItem="Owe-bP-qmt" secondAttribute="leadingMargin" constant="50" id="5ub-AE-vNL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="auA-PM-S3w" secondAttribute="trailing" constant="50" id="Js5-Jm-wid"/>
+                                                <constraint firstItem="auA-PM-S3w" firstAttribute="top" secondItem="Owe-bP-qmt" secondAttribute="topMargin" constant="20" id="NCc-CQ-FID"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="auA-PM-S3w" secondAttribute="bottom" constant="20" id="Rju-Aa-rsW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
-                                            <outlet property="submitButton" destination="RXG-pL-tZe" id="lxX-AJ-wpY"/>
+                                            <outlet property="submitButton" destination="auA-PM-S3w" id="BaS-bC-Dg2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -173,14 +105,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sr2-5g-bwC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730.534351145038" y="-33.098591549295776"/>
+            <point key="canvasLocation" x="1886" y="-52"/>
         </scene>
         <!--Seat Selection View Controller-->
         <scene sceneID="O5e-Fi-qpW">
             <objects>
                 <viewController id="rOb-lr-xEj" customClass="SeatSelectionViewController" customModule="FlightTicketBookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HdQ-gN-0Po">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Ez-jP-8Ro" customClass="SeatColl">
@@ -226,7 +158,7 @@
                                         <size key="customSize" width="97" height="109"/>
                                         <connections>
                                             <outlet property="selectedSeatImage" destination="Kfu-6M-7tj" id="lY4-9A-rPd"/>
-                                            <outlet property="selectedSeatLable" destination="qE4-Y6-SJY" id="etr-NV-ePA"/>
+                                            <outlet property="selectedSeatLabel" destination="qE4-Y6-SJY" id="afX-Jg-ijh"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UnselectedSeatCell" id="aNf-iz-FKM" customClass="UnselectedSeatCollectionViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -269,6 +201,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Enter User Info"/>
+                                <connections>
+                                    <segue destination="zug-AV-XRW" kind="show" id="26b-Oj-py1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ckt-k1-hAS"/>
@@ -281,18 +216,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oaT-2K-8dQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="739.69465648854964" y="-33.098591549295776"/>
+            <point key="canvasLocation" x="753" y="-52"/>
         </scene>
         <!--Destination Search View Controller-->
         <scene sceneID="9vA-VR-RAA">
             <objects>
                 <viewController id="ey2-hb-H8W" customClass="DestinationSearchViewController" customModule="FlightTicketBookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Xh-1p-3dQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="O9I-3c-fbP">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CitySelectionsCell" rowHeight="234" id="0df-YN-BaA" customClass="CitySelectionsTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -380,6 +315,9 @@
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="b1h-3o-ten">
                                                     <rect key="frame" x="18" y="57" width="357" height="31"/>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="geU-Rp-KJX" eventType="valueChanged" id="uzG-nb-8uN"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -393,9 +331,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="travelerNumDisplayLabel" destination="SEu-Dk-FyX" id="9TC-Xo-L7N"/>
+                                            <outlet property="travelerNumDisplayLabel" destination="SEu-Dk-FyX" id="CYk-t2-W4l"/>
                                             <outlet property="travelerNumSlider" destination="b1h-3o-ten" id="3zO-aD-Tbq"/>
-                                            <outlet property="travelerNumTextLable" destination="SEu-Dk-FyX" id="eeW-09-Z7A"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchButtonsCell" rowHeight="117" id="kCp-cn-CM6" customClass="SearchButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -406,10 +343,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FD-7D-aIY">
-                                                    <rect key="frame" x="115" y="31" width="163" height="55"/>
+                                                    <rect key="frame" x="70" y="31" width="253" height="55"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                     <connections>
+                                                        <action selector="saveButtonTapped:" destination="ey2-hb-H8W" eventType="touchUpInside" id="brr-vv-anN"/>
                                                         <segue destination="rOb-lr-xEj" kind="show" id="1rM-eI-VxC"/>
                                                     </connections>
                                                 </button>
@@ -417,10 +355,10 @@
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="tintColor" red="0.1712181575" green="0.43339609890000003" blue="0.52974433509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4FD-7D-aIY" secondAttribute="trailing" constant="95" id="4pl-L9-V5B"/>
-                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="leading" secondItem="bQY-co-62F" secondAttribute="leadingMargin" constant="95" id="GVW-Fn-Ecu"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4FD-7D-aIY" secondAttribute="bottom" constant="20" id="TQw-EI-s29"/>
-                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="top" secondItem="bQY-co-62F" secondAttribute="topMargin" constant="20" id="Xim-pz-OC2"/>
+                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="leading" secondItem="bQY-co-62F" secondAttribute="leadingMargin" constant="50" id="DFI-zU-Dx0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4FD-7D-aIY" secondAttribute="bottom" constant="20" id="jbV-pH-6W5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4FD-7D-aIY" secondAttribute="trailing" constant="50" id="sta-2s-jcP"/>
+                                                <constraint firstItem="4FD-7D-aIY" firstAttribute="top" secondItem="bQY-co-62F" secondAttribute="topMargin" constant="20" id="zcO-hg-okM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -446,21 +384,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1e-eg-xY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295.41984732824426" y="-33.098591549295776"/>
+            <point key="canvasLocation" x="-402" y="-52"/>
         </scene>
         <!--List Of Booking View Controller-->
         <scene sceneID="Myd-jE-xAa">
             <objects>
                 <viewController id="yev-f8-0sB" customClass="ListOfBookingViewController" customModule="FlightTicketBookingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wBQ-iC-63p">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List of Bookings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIn-cq-ES3">
+                                <rect key="frame" x="90" y="103" width="213" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.35321337527076979" green="0.54908020963373871" blue="0.33813029378896925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="highlightedColor" red="0.41091609983015936" green="0.63878073151578607" blue="0.3933689698236279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E89-f3-Nh2">
-                                <rect key="frame" x="0.0" y="153" width="393" height="665"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="792"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="187" id="FQ0-mb-9ar" customClass="BookingTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookingCell" rowHeight="187" id="FQ0-mb-9ar" customClass="BookingTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="187"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FQ0-mb-9ar" id="CEm-JM-gHB">
@@ -497,16 +443,35 @@
                                             <outlet property="userNameLabel" destination="jWP-kv-ZXh" id="1aB-mW-bgj"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddBookingCell" rowHeight="125" id="YRT-04-dML" customClass="AddBookingButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="237" width="393" height="125"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YRT-04-dML" id="sa1-i8-yYw">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wl2-Z2-IhV">
+                                                    <rect key="frame" x="120" y="41" width="153" height="43"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="tinted" title="Add a Booking"/>
+                                                    <connections>
+                                                        <segue destination="ey2-hb-H8W" kind="show" id="wE2-Cd-XpU"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wl2-Z2-IhV" secondAttribute="bottom" constant="30" id="7la-dY-1GG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wl2-Z2-IhV" secondAttribute="trailing" constant="100" id="DIg-0y-DX7"/>
+                                                <constraint firstItem="Wl2-Z2-IhV" firstAttribute="top" secondItem="sa1-i8-yYw" secondAttribute="topMargin" constant="30" id="LTv-bV-FmM"/>
+                                                <constraint firstItem="Wl2-Z2-IhV" firstAttribute="leading" secondItem="sa1-i8-yYw" secondAttribute="leadingMargin" constant="100" id="SQv-06-77O"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addBookingButton" destination="Wl2-Z2-IhV" id="94r-pB-jz7"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List of Bookings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRV-w0-cYl">
-                                <rect key="frame" x="135" y="59" width="122" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.32033095209514623" green="0.75160657745046711" blue="0.51909096502373608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QIa-68-rdB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -519,58 +484,45 @@
                     </view>
                     <navigationItem key="navigationItem" id="pdl-ZN-iVr"/>
                     <connections>
+                        <outlet property="listOfBookingLabel" destination="EIn-cq-ES3" id="q9h-MP-cR6"/>
                         <outlet property="listOfBookingTableView" destination="E89-f3-Nh2" id="IVU-D7-Ra8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLg-U2-ViU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1154.9618320610687" y="804.92957746478874"/>
-        </scene>
-        <!--List of Bookings-->
-        <scene sceneID="bk7-T2-6ma">
-            <objects>
-                <navigationController title="List of Bookings" automaticallyAdjustsScrollViewInsets="NO" id="Vyo-cZ-vbI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H0Q-Uc-NyK">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="yev-f8-0sB" kind="relationship" relationship="rootViewController" id="ncU-tD-T6o"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ieb-zG-ZCv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2081.679389312977" y="804.92957746478874"/>
+            <point key="canvasLocation" x="631" y="-1163"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="6Ed-Ui-5fp">
+        <scene sceneID="eX5-G7-5BG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5WE-my-LRq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i35-a6-x4D" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rnz-e9-wR8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pew-Qy-paG">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ey2-hb-H8W" kind="relationship" relationship="rootViewController" id="Elq-4B-dig"/>
+                        <segue destination="yev-f8-0sB" kind="relationship" relationship="rootViewController" id="ttY-Fb-g3G"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q8L-Ba-E1X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fHh-BJ-wj9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1222.1374045801526" y="-33.098591549295776"/>
+            <point key="canvasLocation" x="-402" y="-1163"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="26b-Oj-py1"/>
+        <segue reference="ora-E0-HQ5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="SelectedSeat" width="512" height="512"/>
         <image name="UnselectSeat" width="512" height="512"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

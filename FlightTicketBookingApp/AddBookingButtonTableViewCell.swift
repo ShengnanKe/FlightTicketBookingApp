@@ -1,16 +1,15 @@
 //
-//  UserGenderTableViewCell.swift
+//  AddBookingButtonTableViewCell.swift
 //  FlightTicketBookingApp
 //
-//  Created by KKNANXX on 4/24/24.
+//  Created by KKNANXX on 4/27/24.
 //
 
 import UIKit
 
-class UserGenderTableViewCell: UITableViewCell {
+class AddBookingButtonTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var genderSelectionLabel: UILabel!
-    @IBOutlet weak var genderSelectionSegment: UISegmentedControl!
+    @IBOutlet weak var addBookingButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
