@@ -9,7 +9,7 @@ import UIKit
 
 class UserInfoTextFieldTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var formTextFieldLable: UILabel!
+    @IBOutlet weak var formTextFieldLabel: UILabel!
     @IBOutlet weak var formTextField: UITextField!
 
     override func awakeFromNib() {

@@ -10,28 +10,28 @@
 
 import UIKit
 
-class UserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var userInfoTableView: UITableView!
     
-    var userBillingInfo: [String: Any] = [
-        "First name": "",
-        "Last name": "",
-        "Email address": "",
-        "Phone number": "",
-        "Passport": "",
-        "Gender": "",
-        "Date of birth": "",
-        "Name on card": "",
-        "Debit/Credit card number": "",
-        "Expiration date": "",
-        "Security code": "",
-        "Country/Territory": "",
-        "Billing address": "",
-        "City": "",
-        "State": "",
-        "Zipcode": ""
-    ]
+    var userBillingInfo = UserBillingInfo(
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        passportNumber: "",
+        gender: "",
+        dateOfBirth: "",
+        cardName: "",
+        cardNumber: "",
+        expirationDate: "",
+        securityCode: "",
+        country: "",
+        billingAddress: "",
+        city: "",
+        state: "",
+        zipcode: ""
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,89 +53,116 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoTextFieldCell", for: indexPath) as?  UserInfoTextFieldTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoTextFieldCell", for: indexPath) as? UserInfoTextFieldTableViewCell else {
+                fatalError("The dequeued cell is not an instance of UserInfoTextFieldTableViewCell.")
+            }
             switch indexPath.row {
             case 0:
-                cell?.formTextFieldLable.text = "First name"
-                cell?.formTextField.text = userBillingInfo["First name"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "First name"
+                cell.formTextField.text = userBillingInfo.firstName
             case 1:
-                cell?.formTextFieldLable.text = "Last name"
-                cell?.formTextField.text = userBillingInfo["Last name"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Last name"
+                cell.formTextField.text = userBillingInfo.lastName
             case 2:
-                cell?.formTextFieldLable.text = "Email address"
-                cell?.formTextField.text = userBillingInfo["Email address"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Email address"
+                cell.formTextField.text = userBillingInfo.email
             case 3:
-                cell?.formTextFieldLable.text = "Phone number"
-                cell?.formTextField.text = userBillingInfo["Phone number"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Phone number"
+                cell.formTextField.text = userBillingInfo.phoneNumber
             case 4:
-                cell?.formTextFieldLable.text = "Passport"
-                cell?.formTextField.text = userBillingInfo["Passport"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Passport"
+                cell.formTextField.text = userBillingInfo.passportNumber
             case 5:
-                cell?.formTextFieldLable.text = "Gender"
-                cell?.formTextField.text = userBillingInfo["Gender"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Gender"
+                cell.formTextField.text = userBillingInfo.gender
             case 6:
-                cell?.formTextFieldLable.text = "Date of birth"
-                cell?.formTextField.text = userBillingInfo["Date of birth"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Date of birth"
+                cell.formTextField.text = userBillingInfo.dateOfBirth
             case 7:
-                cell?.formTextFieldLable.text =  "Name on card"
-                cell?.formTextField.text = userBillingInfo[ "Name on card"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Name on card"
+                cell.formTextField.text = userBillingInfo.cardName
             case 8:
-                cell?.formTextFieldLable.text = "Debit/Credit card number"
-                cell?.formTextField.text = userBillingInfo["Debit/Credit card number"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Debit/Credit card number"
+                cell.formTextField.text = userBillingInfo.cardNumber
             case 9:
-                cell?.formTextFieldLable.text = "Expiration date"
-                cell?.formTextField.text = userBillingInfo["Expiration date"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Expiration date"
+                cell.formTextField.text = userBillingInfo.expirationDate
             case 10:
-                cell?.formTextFieldLable.text = "Security code"
-                cell?.formTextField.text = userBillingInfo["Security code"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Security code"
+                cell.formTextField.text = userBillingInfo.securityCode
             case 11:
-                cell?.formTextFieldLable.text = "Country/Territory"
-                cell?.formTextField.text = userBillingInfo["Country/Territory"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Country/Territory"
+                cell.formTextField.text = userBillingInfo.country
             case 12:
-                cell?.formTextFieldLable.text = "Billing address"
-                cell?.formTextField.text = userBillingInfo["Billing address"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Billing address"
+                cell.formTextField.text = userBillingInfo.billingAddress
             case 13:
-                cell?.formTextFieldLable.text = "City"
-                cell?.formTextField.text = userBillingInfo["City"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "City"
+                cell.formTextField.text = userBillingInfo.city
             case 14:
-                cell?.formTextFieldLable.text = "State"
-                cell?.formTextField.text = userBillingInfo["State"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "State"
+                cell.formTextField.text = userBillingInfo.state
             case 15:
-                cell?.formTextFieldLable.text = "Zipcode"
-                cell?.formTextField.text = userBillingInfo["Zipcode"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                cell.formTextFieldLabel.text = "Zipcode"
+                cell.formTextField.text = userBillingInfo.zipcode
             default:
-                cell?.formTextFieldLable.text = "First name"
-                cell?.formTextField.text = userBillingInfo["First name"] as? String ?? ""
-                cell?.formTextField.tag = indexPath.row
+                break
             }
-            return cell!
+            cell.formTextField.delegate = self
+            cell.formTextField.tag = indexPath.row
+            
+            return cell
         }
         else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonsCell", for: indexPath) as? UserInfoButtonTableViewCell else {
                 fatalError("The dequeued cell is not an instance of UserInfoButtonTableViewCell.")
             }
             cell.submitButton.setTitle("Save User Billing Info", for: .normal)
-            // navigate to the list of bookings
+            // navigate back to the list of bookings -> set up in story board
             return cell
             
         }
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 0:
+            userBillingInfo.firstName = textField.text ?? ""
+        case 1:
+            userBillingInfo.lastName = textField.text ?? ""
+        case 2:
+            userBillingInfo.email = textField.text ?? ""
+        case 3:
+            userBillingInfo.phoneNumber = textField.text ?? ""
+        case 4:
+            userBillingInfo.passportNumber = textField.text ?? ""
+        case 5:
+            userBillingInfo.gender = textField.text ?? ""
+        case 6:
+            userBillingInfo.dateOfBirth = textField.text ?? ""
+        case 7:
+            userBillingInfo.cardName = textField.text ?? ""
+        case 8:
+            userBillingInfo.cardNumber = textField.text ?? ""
+        case 9:
+            userBillingInfo.expirationDate = textField.text ?? ""
+        case 10:
+            userBillingInfo.securityCode = textField.text ?? ""
+        case 11:
+            userBillingInfo.country = textField.text ?? ""
+        case 12:
+            userBillingInfo.billingAddress = textField.text ?? ""
+        case 13:
+            userBillingInfo.city = textField.text ?? ""
+        case 14:
+            userBillingInfo.state = textField.text ?? ""
+        case 15:
+            userBillingInfo.zipcode = textField.text ?? "" // zipcode is not being saved properly, when i redo it it's saved
+        default:
+            break
+        }
+    }
+    
     
     @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all those info into the userBookingInfo dictionary
         saveUserBillingInfo()
@@ -143,13 +170,50 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func saveUserBillingInfo() {
-        for (index, key) in userBillingInfo.keys.enumerated() {
-            if let cell = userInfoTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? UserInfoTextFieldTableViewCell {
-                userBillingInfo[key] = cell.formTextField.text
+        // Debug: Print out the raw data to see if it's present and correctly formatted
+        if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo") {
+            print("BookingInfoData: \(bookingInfoData)")
+            do {
+                let bookingInfo = try JSONDecoder().decode(UserBookingInfo.self, from: bookingInfoData)
+                // Proceed with the rest of your logic...
+            } catch {
+                print("Failed to decode booking info: \(error)")
             }
+        } else {
+            print("BookingInfo data not found in UserDefaults.")
         }
-        UserDefaults.standard.set(userBillingInfo, forKey: "UserBillingInfo")
+        
+        // Do the same for selected seats
+        if let selectedSeatsData = UserDefaults.standard.data(forKey: "SelectedSeats") {
+            print("SelectedSeatsData: \(selectedSeatsData)")
+            do {
+                let selectedSeats = try JSONDecoder().decode([String: Bool].self, from: selectedSeatsData)
+                // Proceed with the rest of your logic...
+            } catch {
+                print("Failed to decode selected seats: \(error)")
+            }
+        } else {
+            print("SelectedSeats data not found in UserDefaults.")
+        }
+        
+        // Combine everything to save into a Booking struct and save
+        // ...
     }
     
+    func loadBookings() -> [Booking] {
+        let defaults = UserDefaults.standard
+        if let savedBookingsData = defaults.data(forKey: "Bookings"),
+           let savedBookings = try? JSONDecoder().decode([Booking].self, from: savedBookingsData) {
+            return savedBookings
+        }
+        return []
+    }
     
+    func saveBookings(_ bookings: [Booking]) {
+        let defaults = UserDefaults.standard
+        if let bookingsData = try? JSONEncoder().encode(bookings) {
+            defaults.set(bookingsData, forKey: "Bookings")
+        }
+    }
 }
+

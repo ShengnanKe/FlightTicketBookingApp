@@ -9,19 +9,24 @@
  departureDatePickerView / returnDatePickerView
  textfield: # of travelers
  save all userinput into the userBookingInfo dictionary and make people able to have access to edit delete and display on another view controller
+ 
+ 
+ struct UserBookingInfo: Codable {
+ var originCity: String
+ var destinationCity: String
+ var departureDate: Date
+ var returnDate: Date
+ var numberOfTravelers: Int
+ }
+ 
  */
 
 import UIKit
 
-class DestinationSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DestinationSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    var userBookingInfo: [String: Any] = [
-        "Origin city": "",
-        "Destination city": "",
-        "Departure date": "",
-        "Return date": "",
-        "Number of travelers": 0
-    ]
+    var bookingInfo = UserBookingInfo(originCity: "", destinationCity: "", departureDate: "", returnDate: "", numberOfTravelers: 1)
+    
     
     @IBOutlet weak var myTableView: UITableView!
     var cities = [String]()
@@ -37,10 +42,14 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
               let plistData = FileManager.default.contents(atPath: plistPath),
               let citiesData = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil),
               let cityDictionary = citiesData as? [String: String] else {
-            print("Error loading cities from plist")
+            print("Error!!! loading cities from plist")
             return
         }
         cities = cityDictionary.keys.sorted()
+        
+        if let loadedBookingInfo = loadBookingInfo() {
+            bookingInfo = loadedBookingInfo
+        }
         
     }
     
@@ -83,20 +92,21 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
             cell.cityPickerView.reloadAllComponents()
             return cell
         }
-        else if indexPath.section == 1 { //DepartureDatePickerView / returnDatePickerView
+        else if indexPath.section == 1 { // DepartureDate textfield / returnDate textfield
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateSelectionsCell", for: indexPath) as? DateSelectionsTableViewCell
             switch indexPath.row {
             case 0:
                 cell?.dateSelectionLabel.text = "Departure date"
-                cell?.datePicker.tag = 0
+                cell?.dateTextfield.tag = 0
             case 1:
-                cell?.dateSelectionLabel.text = "return date"
-                cell?.datePicker.tag = 1
+                cell?.dateSelectionLabel.text = "Return date"
+                cell?.dateTextfield.tag = 1
             default:
-                cell?.dateSelectionLabel.text = "Departure date"
-                cell?.datePicker.tag = 0
+                cell?.dateSelectionLabel.text = "Return date"
+                cell?.dateTextfield.tag = 1
             }
-            return cell!
+            cell?.dateTextfield.delegate = self // for textfield delegate
+            return cell ?? UITableViewCell()
         }
         else if indexPath.section == 2 { //textfield: # of travelers
             let cell = tableView.dequeueReusableCell(withIdentifier: "TravelerNumCell", for: indexPath) as? TravelerNumTableViewCell
@@ -109,30 +119,63 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
         }
     }
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all those info into the userBookingInfo dictionary
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 0 { // departure date
+            bookingInfo.departureDate = textField.text ?? ""
+            print("Departure date set to: \(textField.text ?? "invalid input")") //check
+        } 
+        else if textField.tag == 1 { // return date
+            bookingInfo.returnDate = textField.text ?? ""
+            print("Return date set to: \(textField.text ?? "invalid input")")
+        }
+    }
+    
+    @IBAction func numberOfTravelersChanged(_ sender: UISlider) {
+        bookingInfo.numberOfTravelers = Int(sender.value)
+        print("Number of travelers set to: \(Int(sender.value))")
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all those info-userBookingInfo struct
         saveBookingInfo()
-        print(userBookingInfo)
+        printCurrentBookingInfo()
+        
     }
     
     func saveBookingInfo() {
-        if let departureDateCell = myTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? DateSelectionsTableViewCell,
-           let returnDateCell = myTableView.cellForRow(at: IndexPath(row: 1, section: 1)) as? DateSelectionsTableViewCell,
-           let travelersCell = myTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? TravelerNumTableViewCell,
-           let originCity = (myTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CitySelectionsTableViewCell)?.cityPickerView.accessibilityLabel,
-           let destinationCity = (myTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? CitySelectionsTableViewCell)?.cityPickerView.accessibilityLabel {
-            
-            let userBookingInfo = [
-                "Origin city": originCity,
-                "Destination city": destinationCity,
-                "Departure date": departureDateCell.datePicker.date.timeIntervalSince1970,
-                "Return date": returnDateCell.datePicker.date.timeIntervalSince1970,
-                "Number of travelers": Int(travelersCell.travelerNumSlider.value)
-            ] as [String : Any]
-            
-            UserDefaults.standard.set(userBookingInfo, forKey: "UserBookingInfo")
+        let encoder = JSONEncoder()
+        
+        if let encoded = try? encoder.encode(bookingInfo) {
+            UserDefaults.standard.set(encoded, forKey: "BookingInfo")
+            print("Booking Info saved.")
+        } else {
+            print("Failed to encode Booking Info.")
         }
     }
-
+    
+    func loadBookingInfo() -> UserBookingInfo? {
+        if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo") {
+            let decoder = JSONDecoder()
+            
+            if let bookingInfo = try? decoder.decode(UserBookingInfo.self, from: bookingInfoData) {
+                return bookingInfo
+            } else {
+                print("Failed to decode booking info")
+            }
+        }
+        return nil
+    }
+    
+    
+    // for checking if info has been saved or not
+    func printCurrentBookingInfo() {
+        let encoder = JSONEncoder()
+        
+        if let encoded = try? encoder.encode(bookingInfo),
+           let jsonString = String(data: encoded, encoding: .utf8) {
+            print(jsonString)
+        }
+    }
+    
 }
 
 
@@ -152,9 +195,11 @@ extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedCity = cities[row]
         if pickerView.tag == 0 {
-            userBookingInfo["Origin city"] = selectedCity
+            bookingInfo.originCity = selectedCity
+            print("Origin city set to: \(selectedCity)")
         } else {
-            userBookingInfo["Destination city"] = selectedCity
+            bookingInfo.destinationCity = selectedCity
+            print("Destination city set to: \(selectedCity)")
         }
     }
     

@@ -40,6 +40,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldValueChanged:" destination="6AC-fW-aCu" eventType="editingDidEnd" id="Pph-0T-FpS"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -53,8 +56,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="formTextField" destination="0eD-h9-MTp" id="NAA-zy-DeH"/>
-                                            <outlet property="formTextFieldLable" destination="jJi-93-9KE" id="uci-za-nZk"/>
+                                            <outlet property="formTextField" destination="0eD-h9-MTp" id="Y3o-3P-b4d"/>
+                                            <outlet property="formTextFieldLabel" destination="jJi-93-9KE" id="egE-uW-fI5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonsCell" rowHeight="99" id="xjK-zJ-HT5" customClass="UserInfoButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -161,39 +164,6 @@
                                             <outlet property="selectedSeatLabel" destination="qE4-Y6-SJY" id="afX-Jg-ijh"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UnselectedSeatCell" id="aNf-iz-FKM" customClass="UnselectedSeatCollectionViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="0.0" width="89" height="109"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qos-6D-rte">
-                                            <rect key="frame" x="0.0" y="0.0" width="89" height="109"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvI-km-nCC">
-                                                    <rect key="frame" x="20" y="2" width="69" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="SelectedSeat" translatesAutoresizingMaskIntoConstraints="NO" id="oSL-4i-g0E">
-                                                    <rect key="frame" x="10" y="31" width="69" height="55"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="oSL-4i-g0E" firstAttribute="bottom" secondItem="Qos-6D-rte" secondAttribute="bottomMargin" constant="2" id="IUK-6Z-2ye"/>
-                                                <constraint firstItem="EvI-km-nCC" firstAttribute="leading" secondItem="Qos-6D-rte" secondAttribute="leading" constant="20" symbolic="YES" id="NuU-hv-WY1"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="oSL-4i-g0E" secondAttribute="trailing" constant="2" id="Q7y-3j-92v"/>
-                                                <constraint firstItem="oSL-4i-g0E" firstAttribute="top" secondItem="EvI-km-nCC" secondAttribute="bottom" constant="2" id="UIq-at-Qtg"/>
-                                                <constraint firstItem="EvI-km-nCC" firstAttribute="top" secondItem="Qos-6D-rte" secondAttribute="top" constant="2" id="pXn-SY-Mtq"/>
-                                                <constraint firstItem="oSL-4i-g0E" firstAttribute="leading" secondItem="Qos-6D-rte" secondAttribute="leadingMargin" constant="2" id="tPk-H2-fQa"/>
-                                                <constraint firstAttribute="trailing" secondItem="EvI-km-nCC" secondAttribute="trailing" id="vTs-gt-qRM"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="89" height="109"/>
-                                        <connections>
-                                            <outlet property="unSelectedSeatImage" destination="oSL-4i-g0E" id="65B-jg-LCW"/>
-                                            <outlet property="unSelectedSeatLable" destination="EvI-km-nCC" id="kPn-QJ-OJ9"/>
-                                        </connections>
-                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ff5-lK-X3x">
@@ -202,6 +172,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Enter User Info"/>
                                 <connections>
+                                    <action selector="saveButtonTapped:" destination="rOb-lr-xEj" eventType="touchUpInside" id="Lhi-Ra-tae"/>
                                     <segue destination="zug-AV-XRW" kind="show" id="26b-Oj-py1"/>
                                 </connections>
                             </button>
@@ -280,24 +251,26 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-d3-Foc">
-                                                    <rect key="frame" x="20" y="47" width="263" height="43"/>
-                                                </datePicker>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5z-KI-GUc">
+                                                    <rect key="frame" x="20" y="45" width="353" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="10" id="3gh-QB-OM9"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Ek0-d3-Foc" secondAttribute="trailing" constant="90" id="Vr3-au-INl"/>
-                                                <constraint firstItem="Ek0-d3-Foc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="a50-wg-T94"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="b5z-KI-GUc" secondAttribute="bottom" constant="21" id="0cu-mO-KfQ"/>
+                                                <constraint firstItem="b5z-KI-GUc" firstAttribute="trailing" secondItem="7Bz-c9-N2A" secondAttribute="trailingMargin" id="31A-s1-WMv"/>
+                                                <constraint firstItem="b5z-KI-GUc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="R2V-Lz-tAw"/>
+                                                <constraint firstItem="b5z-KI-GUc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="8" symbolic="YES" id="SK6-tq-yCs"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Due-kY-jKL" secondAttribute="trailing" constant="20" symbolic="YES" id="dF0-7T-PSF"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Ek0-d3-Foc" secondAttribute="bottom" constant="10" id="dU3-9J-Hzb"/>
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="tRk-ke-NLg"/>
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="top" secondItem="7Bz-c9-N2A" secondAttribute="topMargin" id="uMq-qY-CTh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="datePicker" destination="Ek0-d3-Foc" id="2Ld-cX-Xcw"/>
                                             <outlet property="dateSelectionLabel" destination="Due-kY-jKL" id="X15-U1-Z2E"/>
+                                            <outlet property="dateTextfield" destination="b5z-KI-GUc" id="BV0-UR-vUO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelerNumCell" rowHeight="110" id="geU-Rp-KJX" customClass="TravelerNumTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -316,6 +289,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="b1h-3o-ten">
                                                     <rect key="frame" x="18" y="57" width="357" height="31"/>
                                                     <connections>
+                                                        <action selector="numberOfTravelersChanged:" destination="ey2-hb-H8W" eventType="valueChanged" id="zkI-Kg-TPV"/>
                                                         <action selector="sliderValueChanged:" destination="geU-Rp-KJX" eventType="valueChanged" id="uzG-nb-8uN"/>
                                                     </connections>
                                                 </slider>
@@ -406,45 +380,72 @@
                                 <rect key="frame" x="0.0" y="50" width="393" height="792"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookingCell" rowHeight="187" id="FQ0-mb-9ar" customClass="BookingTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="187"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookingCell" rowHeight="270" id="FQ0-mb-9ar" customClass="BookingTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FQ0-mb-9ar" id="CEm-JM-gHB">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="187"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="270"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWP-kv-ZXh">
-                                                    <rect key="frame" x="39" y="19" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWP-kv-ZXh">
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="45" height="21.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwI-gx-tHE">
+                                                    <rect key="frame" x="20" y="62" width="80" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyS-yz-X8P">
-                                                    <rect key="frame" x="39" y="63" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIU-1F-wFK">
+                                                    <rect key="frame" x="143" y="62" width="80" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHK-cg-5Oo">
-                                                    <rect key="frame" x="39" y="111" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eh2-6B-9vI">
+                                                    <rect key="frame" x="20" y="109" width="80" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQP-aC-Ud0">
+                                                    <rect key="frame" x="143" y="109" width="80" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31c-4B-qfe">
+                                                    <rect key="frame" x="20" y="161" width="45" height="21.666666666666742"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="jWP-kv-ZXh" firstAttribute="top" secondItem="CEm-JM-gHB" secondAttribute="topMargin" id="KXp-gK-TBs"/>
+                                                <constraint firstItem="jWP-kv-ZXh" firstAttribute="leading" secondItem="CEm-JM-gHB" secondAttribute="leadingMargin" id="L8g-bC-eOV"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="OriginDestinationLabel" destination="lyS-yz-X8P" id="edP-cw-Q9S"/>
-                                            <outlet property="dateLabel" destination="UHK-cg-5Oo" id="tok-YO-3zd"/>
+                                            <outlet property="departureDateLabel" destination="Eh2-6B-9vI" id="TRI-Tc-rzp"/>
+                                            <outlet property="destinationCityLabel" destination="HIU-1F-wFK" id="jqz-O4-TLc"/>
+                                            <outlet property="originCityLabel" destination="kwI-gx-tHE" id="VLH-Di-DXD"/>
+                                            <outlet property="returnDateLabel" destination="YQP-aC-Ud0" id="KU9-is-RrP"/>
+                                            <outlet property="selectedSeatsLabel" destination="31c-4B-qfe" id="hex-7O-48d"/>
                                             <outlet property="userNameLabel" destination="jWP-kv-ZXh" id="1aB-mW-bgj"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddBookingCell" rowHeight="125" id="YRT-04-dML" customClass="AddBookingButtonTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="237" width="393" height="125"/>
+                                        <rect key="frame" x="0.0" y="320" width="393" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YRT-04-dML" id="sa1-i8-yYw">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="125"/>
@@ -490,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLg-U2-ViU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="-1163"/>
+            <point key="canvasLocation" x="2941" y="-1123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eX5-G7-5BG">
@@ -512,14 +513,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="26b-Oj-py1"/>
+        <segue reference="1rM-eI-VxC"/>
         <segue reference="ora-E0-HQ5"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="SelectedSeat" width="512" height="512"/>
         <image name="UnselectSeat" width="512" height="512"/>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

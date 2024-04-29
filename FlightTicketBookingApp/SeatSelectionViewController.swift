@@ -7,13 +7,54 @@
 
 // save in userdefault
 
-
 import UIKit
+
+class SeatManager { // for better management on the seats avaliablity
+    static let shared = SeatManager()
+    var seatsAvailability: [String: Bool] = [:]
+    
+    private init() {}
+    
+    func loadSeats() {
+        if let data = UserDefaults.standard.data(forKey: "SeatsAvailability"),
+           let availability = try? JSONDecoder().decode([String: Bool].self, from: data) {
+            seatsAvailability = availability
+        }
+    }
+    
+    func saveSeats() {
+        if let data = try? JSONEncoder().encode(seatsAvailability) {
+            UserDefaults.standard.set(data, forKey: "SeatsAvailability")
+        }
+    }
+    
+    func updateSeats(forBooking booking: Booking, isBookingDeleted: Bool = false) {
+        for (seat, isSelected) in booking.selectedSeats {
+            if isBookingDeleted {
+                seatsAvailability[seat] = false
+            } else {
+                seatsAvailability[seat] = isSelected
+            }
+        }
+        saveSeats()
+    }
+    
+    func loadMaximumSelectableSeats() -> Int {
+        if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo"),
+           let bookingInfo = try? JSONDecoder().decode(UserBookingInfo.self, from: bookingInfoData) {
+            // Assuming `numberOfTravelers` determines the max seats selectable
+            return bookingInfo.numberOfTravelers
+        }
+        return 0 // Default or error case
+    }
+    
+    
+}
+
 
 class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     // save seats avalibility info - bool - 0(unselected)/1(selected)
-    // var seatsAvailability: [IndexPath: Bool] = [:] // [String: Bool] = [:]
     var seatsAvailability: [String: Bool] = [:] // which section, seat# and it's selected or unselected
     
     // set up limit # on seat selections based on userinput from pervious page
@@ -34,6 +75,8 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         
         // to allow de-select a cell action, I used
         seatSelectionCollectionView.allowsMultipleSelection = true
+        
+        self.maxSelectableSeats = SeatManager.shared.loadMaximumSelectableSeats()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -69,15 +112,23 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     
     //
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Select - \(indexPath.section)-\(indexPath.row)")
-        // the specific seat section and #
-        let seatIndex = "\(indexPath.section)-\(indexPath.row)" // "First Class" or "Economy Class" and it's seat #
+        
+        let seatIndex = "\(indexPath.section)-\(indexPath.row)" // 0:"First Class" or 1:"Economy Class" and it's seat #
         
         // check and see if this seat is selected or not, and set default to fasle
         let isCurrentlySelected = seatsAvailability[seatIndex] ?? false
         
         // to change the status of the current seat
-        seatsAvailability[seatIndex] = !isCurrentlySelected
+        if isCurrentlySelected {
+            // If already selected, deselect it
+            seatsAvailability[seatIndex] = false
+            collectionView.deselectItem(at: indexPath, animated: true)
+            print("De Select - \(indexPath.section)-\(indexPath.row)")
+        } else {
+            // If not selected, select it
+            seatsAvailability[seatIndex] = true
+            print("Select - \(indexPath.section)-\(indexPath.row)")
+        }
         
         collectionView.reloadItems(at: [indexPath])
     }
@@ -109,28 +160,34 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         let selectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSeatCell", for: indexPath) as! SelectedSeatCollectionViewCell
         
         let sectionName = indexPath.section == 0 ? "First Class" : "Economy Class"
-        
-        let  seatIndex = "\(indexPath.section)-\(indexPath.row)"
+        let seatIndex = "\(indexPath.section)-\(indexPath.row)"
         
         selectedCell.selectedSeatLabel.text = "\(sectionName) - \(indexPath.row + 1)"  // Display section and seat #
-        if seatsAvailability[ seatIndex] ?? false {
+        
+        // Check the seat availability and update the cell backgroundColor
+        if let isSeatSelected = seatsAvailability[seatIndex], isSeatSelected {
             selectedCell.backgroundColor = UIColor.gray  // Selected
             selectedCell.selectedSeatLabel.textColor = UIColor.white
         } else {
             selectedCell.backgroundColor = UIColor.green  // Not selected
-            selectedCell.selectedSeatLabel.textColor = UIColor.white
+            selectedCell.selectedSeatLabel.textColor = UIColor.black
         }
         
-        return selectedCell
-    }
+        return selectedCell    }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all seatsAvailability into the seatsAvailability dictionary
         saveSeatsAvailability()
-        print(saveSeatsAvailability)
+        printCurrentSeatSelections()
     }
     
     func saveSeatsAvailability() {
         UserDefaults.standard.set(seatsAvailability, forKey: "seatsAvailability")
+    }
+    
+    func printCurrentSeatSelections() {
+        for (seatIndex, isSelected) in seatsAvailability.sorted(by: { $0.key < $1.key }) {
+            print("Seat \(seatIndex): \(isSelected ? "Selected" : "Not Selected")")
+        }
     }
     
 }

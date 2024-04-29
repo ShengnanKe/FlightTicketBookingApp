@@ -15,55 +15,77 @@
 
 import UIKit
 
+struct UserBookingInfo: Codable {
+    var originCity: String
+    var destinationCity: String
+    var departureDate: String
+    var returnDate: String
+    var numberOfTravelers: Int
+}
+
+struct UserBillingInfo: Codable {
+    var firstName: String
+    var lastName: String
+    var email: String
+    var phoneNumber: String
+    var passportNumber: String
+    var gender: String
+    var dateOfBirth: String
+    var cardName: String
+    var cardNumber: String
+    var expirationDate: String
+    var securityCode: String
+    var country: String
+    var billingAddress: String
+    var city: String
+    var state: String
+    var zipcode: String
+}
+
+struct Booking: Codable {
+    var billingInfo: UserBillingInfo
+    var bookingInfo: UserBookingInfo
+    var selectedSeats: [String: Bool]
+}
+
 class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var listOfBookingTableView: UITableView!
     @IBOutlet weak var listOfBookingLabel: UILabel!
     
-    struct UserBillingInfo: Codable {
-        var firstName: String
-        var lastName: String
-        var email: String
-        // Add other billing properties...
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        listOfBookingTableView.dataSource = self
+        listOfBookingTableView.delegate = self
+        listOfBookingTableView.reloadData()
+        // Do any additional setup after loading the view.
+        
+        bookings = loadBookings()
+        listOfBookingTableView.reloadData()
+        
+        printSavedBookings()
+        print("called printSavedBookings()")
     }
-
-    struct UserBookingInfo: Codable {
-        var originCity: String
-        var destinationCity: String
-        var departureDate: Date
-        var returnDate: Date
-        var numberOfTravelers: Int
-    }
-
-    struct Booking: Codable {
-        var billingInfo: UserBillingInfo
-        var bookingInfo: UserBookingInfo
-        var selectedSeats: [String: Bool]
-    }
-
     
+    // save list of bookings
+    var bookings: [Booking] = []
     
+    // load booking info
     
-    var users: [NSDictionary] = []
-    
-    func loadBookingInfo() {
-        if let userBookingInfo = UserDefaults.standard.dictionary(forKey: "UserBookingInfo") {
-            let originCity = userBookingInfo["Origin city"] as? String ?? ""
-            let destinationCity = userBookingInfo["Destination city"] as? String ?? ""
-            let departureDate = Date(timeIntervalSince1970: userBookingInfo["Departure date"] as? TimeInterval ?? 0)
-            let returnDate = Date(timeIntervalSince1970: userBookingInfo["Return date"] as? TimeInterval ?? 0)
-            let numberOfTravelers = userBookingInfo["Number of travelers"] as? Int ?? 0
+    func loadBookings() -> [Booking] {
+        let defaults = UserDefaults.standard
+        if let savedBookingsData = defaults.data(forKey: "Bookings"),
+           let savedBookings = try? JSONDecoder().decode([Booking].self, from: savedBookingsData) {
+            return savedBookings
         }
+        return []
     }
     
-    var userBillingInfo: [String: Any] = [:]
-    
-    func loadUserBillingInfo() {
-        if let loadedBillingInfo = UserDefaults.standard.dictionary(forKey: "UserBillingInfo") {
-            userBillingInfo = loadedBillingInfo
-            
-            // Optionally update the UI with this information
-            // updateUIWithLoadedInfo()
+    func saveBookings() {
+        let defaults = UserDefaults.standard
+        if let bookingsData = try? JSONEncoder().encode(bookings) {
+            defaults.set(bookingsData, forKey: "Bookings")
         }
     }
     
@@ -73,10 +95,10 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 { // for booking list
-            return users.count // depends on how many user booking i have saved
+            return bookings.count // depends on how many user booking i have saved
         }
         else {
-            return 1
+            return 1 // for the 'Add a Booking' button cell
         }
     }
     
@@ -85,35 +107,48 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookingCell", for: indexPath) as? BookingTableViewCell else {
                 fatalError("The dequeued cell is not an instance of CompanyTableViewCell.")
             }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            let booking = bookings[indexPath.row]
+            cell.userNameLabel.text = "\(booking.billingInfo.firstName) \(booking.billingInfo.lastName)"
+            cell.originCityLabel.text = "From: \(booking.bookingInfo.originCity)"
+            cell.destinationCityLabel.text = "To: \(booking.bookingInfo.destinationCity)"
+            cell.departureDateLabel.text = "Depart: \( booking.bookingInfo.departureDate)"
+            cell.returnDateLabel.text = "Return: \( booking.bookingInfo.returnDate)"
+            
+            let selectedSeats = booking.selectedSeats.filter { $0.value }.map { $0.key }.joined(separator: ", ")
+            cell.selectedSeatsLabel.text = "Seats: \(selectedSeats)"
+            
             return cell
-        }else{
+        }
+        else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddBookingCell", for: indexPath) as? AddBookingButtonTableViewCell
             cell?.addBookingButton.setTitle("Add a Booking", for: .normal)
             return cell!
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        listOfBookingTableView.dataSource = self
-        listOfBookingTableView.delegate = self
-        listOfBookingTableView.reloadData()
-        // Do any additional setup after loading the view.
-    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (_, _, completionHandler) in
+        
+        guard indexPath.section == 0 else { return nil } // only the bookings cell has delete and update
+        
+        // Delete
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             
-            self.users.remove(at: indexPath.row)
-            self.saveUsers()
-            self.listOfBookingTableView.reloadData()
+            self.bookings.remove(at: indexPath.row) // delete
+            self.saveBookings() // save the updated list
+            tableView.deleteRows(at: [indexPath], with: .automatic) // reflect this change with animation
             completionHandler(true)
-        })
+        }
         
-        
-        let updateAction = UIContextualAction(style: .normal, title: "Update", handler: { (_, _, completionHandler) in completionHandler(true)
-        })
+        // Update
+        let updateAction = UIContextualAction(style: .normal, title: "Update") { (action, view, completionHandler) in
+            // Usually, you would transition to another view controller to update the selected booking
+            // For now, we'll call the completion handler
+            // TODO: Implement update functionality
+            completionHandler(true)
+        }
         
         deleteAction.backgroundColor = .red
         updateAction.backgroundColor = .green
@@ -124,20 +159,24 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         return swipeAction
     }
     
-    func fetchUsers() -> [NSDictionary] {
+    
+    func printSavedBookings() {
         let defaults = UserDefaults.standard
-        if let data = defaults.data(forKey: "Users"),
-           let users = try? JSONSerialization.jsonObject(with: data, options: []) as? [NSDictionary] {
-            return users
+        if let savedBookingsData = defaults.data(forKey: "Bookings") {
+            do {
+                let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
+                for booking in savedBookings {
+                    print("Billing Info: \(booking.billingInfo)")
+                    print("Booking Info: \(booking.bookingInfo)")
+                    print("Selected Seats: \(booking.selectedSeats)")
+                }
+            } catch {
+                print("Failed to decode bookings: \(error)")
+            }
+        } else {
+            print("No bookings found in UserDefaults.")
         }
-        return []
     }
     
-    func saveUsers() {
-        let defaults = UserDefaults.standard
-        if let data = try? JSONSerialization.data(withJSONObject: users, options: []) {
-            defaults.set(data, forKey: "Users")
-        }
-    }
     
 }

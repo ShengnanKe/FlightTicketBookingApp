@@ -10,11 +10,11 @@ import UIKit
 class DateSelectionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateSelectionLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var dateTextfield: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        datePicker.datePickerMode = .date // .dateAndTime
+        //datePicker.datePickerMode = .date // .dateAndTime
         // Initialization code
     }
     
