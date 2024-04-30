@@ -4,74 +4,33 @@
 //
 //  Created by KKNANXX on 4/26/24.
 //
-
 /*
- 
- list of booking, a button -> add a booking () then navigate to the page for destination selection ->seat selection -> user info -> able to edit
- 
- save data of seat data that seat is already been booked, it need to be gray out.  edit, free the ticket if the booking been deleted.
+ i want to create an overall dictionary with every details of a booking in the with the initial VC - ListOfBookingViewController, and on the the next VC (DestinationSearchViewController) filling couple of values of the dictionary., and on the next VC, save seats info with SeatSelectionViewController, and finally with UserInfoViewController to save all the billing info and then save everything in userdefaults. and how should I set it up here
  
  */
 
-//import UIKit
+import UIKit
 
 class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var listOfBookingTableView: UITableView!
     @IBOutlet weak var listOfBookingLabel: UILabel!
     
-    var bookingDetails: [String: Any] = [:]
-    
-//    var bookingDictionary: [String: Any] = [
-//        "bookingInfo": [
-//            "Origin City": "",
-//            "Destination city": "",
-//            "Start date": "",
-//            "End date": "",
-//            "Number of travelers": 0
-//        ],
-//        "billingInfo": [
-//            "First name": "",
-//            "Last name": "",
-//            "Email address": "",
-//            "Phone number": 0,
-//            "Passport": "",
-//            "Gender": "",
-//            "Date of birth": 0,
-//            "Name on card": "",
-//            "Debit/Credit card number": 0,
-//            "Expiration date": "",
-//            "Security code": 0,
-//            "Country/Territory": "",
-//            "Billing address": "",
-//            "City": "",
-//            "State": "",
-//            "Zipcode": 0
-//        ]
-        // in need to think about this
-//            ,
-//        "selectedSeats": [ // [String: Bool]
-//            "1A": true,
-//            "1B": false
-//        ]
-//    ]
-    
-    
+    var bookings: [[String: Any]] = [] // this contains all the booking details from userdefau
+ s
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let docDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-//        print(docDirectoryURL)
+        //        let docDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        //        print(docDirectoryURL)
         
         listOfBookingTableView.dataSource = self
         listOfBookingTableView.delegate = self
-        listOfBookingTableView.reloadData()
         // Do any additional setup after loading the view.
         
         bookings = loadBookings()
         listOfBookingTableView.reloadData()
         
-        printSavedBookings()
         print("called printSavedBookings()")
     }
     
@@ -82,20 +41,9 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         print("View will appear and bookings are reloaded.")
     }
     
-    // save list of bookings
-    var bookings: [Booking] = []
-    
-    // load booking info
-    
-    func loadBookings() -> [Booking] {
-       return []
-    }
-    
-    func saveBookings() {
-        
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
+        // one for the display
+        // one for the add booking button
         return 2
     }
     
@@ -111,29 +59,48 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookingCell", for: indexPath) as? BookingTableViewCell else {
-                fatalError("The dequeued cell is not an instance of CompanyTableViewCell.")
+                fatalError("The dequeued cell is not an instance of BookingTableViewCell.")
             }
+            
+            // Extract the booking dictionary for the current row
+            let bookingDict = bookings[indexPath.row]
+            
+            // Extract bookingInfo and billingInfo parts
+            let bookingInfo = bookingDict["bookingInfo"] as? [String: Any] ?? [:]
+            let billingInfo = bookingDict["billingInfo"] as? [String: Any] ?? [:]
+            let selectedSeats = bookingDict["selectedSeats"] as? [String: Bool] ?? [:]
+            
+            // Set the labels in the cell
+            cell.userNameLabel.text = "\(billingInfo["firstName"] as? String ?? "") \(billingInfo["lastName"] as? String ?? "")"
+            cell.originCityLabel.text = "From: \(bookingInfo["originCity"] as? String ?? "N/A")"
+            cell.destinationCityLabel.text = "To: \(bookingInfo["destinationCity"] as? String ?? "N/A")"
+            
+            // Formatting the dates
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .none
-            let booking = bookings[indexPath.row]
-            cell.userNameLabel.text = "\(booking.billingInfo.firstName) \(booking.billingInfo.lastName)"
-            cell.originCityLabel.text = "From: \(booking.bookingInfo.originCity)"
-            cell.destinationCityLabel.text = "To: \(booking.bookingInfo.destinationCity)"
-            cell.departureDateLabel.text = "Depart: \( booking.bookingInfo.departureDate)"
-            cell.returnDateLabel.text = "Return: \( booking.bookingInfo.returnDate)"
             
-            let selectedSeats = booking.selectedSeats.filter { $0.value }.map { $0.key }.joined(separator: ", ")
-            cell.selectedSeatsLabel.text = "Seats: \(selectedSeats)"
+            if let departureDate = bookingInfo["departureDate"] as? Date,
+               let returnDate = bookingInfo["returnDate"] as? Date {
+                cell.departureDateLabel.text = "Depart: \(dateFormatter.string(from: departureDate))"
+                cell.returnDateLabel.text = "Return: \(dateFormatter.string(from: returnDate))"
+            } else {
+                cell.departureDateLabel.text = "Depart: N/A"
+                cell.returnDateLabel.text = "Return: N/A"
+            }
+            
+            // Handling selected seats display
+            let selectedSeatKeys = selectedSeats.filter { $0.value }.map { $0.key }
+            cell.selectedSeatsLabel.text = "Seats: \(selectedSeatKeys.joined(separator: ", "))"
             
             return cell
-        }
-        else{
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddBookingCell", for: indexPath) as? AddBookingButtonTableViewCell
             cell?.addBookingButton.setTitle("Add a Booking", for: .normal)
             return cell!
         }
     }
+    
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -172,23 +139,48 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         return swipeAction
     }
     
+    @IBAction func addBookingButtonPressed(_ sender: UIButton) {
+        bookingDetails = [
+            "bookingInfo": [
+                "originCity": "",
+                "destinationCity": "",
+                "departureDate": Date(),
+                "returnDate": Date(),
+                "numberOfTravelers": 1
+            ],
+            "selectedSeats": [:],
+            "billingInfo": [
+                "First name": "",
+                "Last name": "",
+                "Email address": "",
+                "Phone number": 0,
+                "Passport": "",
+                "Gender": "",
+                "Date of birth": 0,
+                "Name on card": "",
+                "Debit/Credit card number": 0,
+                "Expiration date": "",
+                "Security code": 0,
+                "Country/Territory": "",
+                "Billing address": "",
+                "City": "",
+                "State": "",
+                "Zipcode": 0
+            ]
+        ]
+    }
     
-    func printSavedBookings() {
+    func loadBookings() {
         let defaults = UserDefaults.standard
-        if let savedBookingsData = defaults.data(forKey: "Bookings") {
-            do {
-                let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
-                for booking in savedBookings {
-                    print("Booking Info: \(booking.bookingInfo)")
-                    print("Selected Seats: \(booking.selectedSeats)")
-                    print("Billing Info: \(booking.billingInfo)")
-                }
-            } catch {
-                print("Failed to decode bookings: \(error)")
-            }
-        } else {
-            print("No bookings found in UserDefaults.")
+        if let savedBookings = defaults.array(forKey: "Bookings") as? [[String: Any]] {
+            bookings = savedBookings
         }
+    }
+    
+    func saveBookings() {
+        let defaults = UserDefaults.standard
+        defaults.set(bookings, forKey: "Bookings")
+        defaults.synchronize()
     }
     
     

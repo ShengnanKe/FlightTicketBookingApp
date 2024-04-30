@@ -16,13 +16,6 @@ class SeatManager { // for better management on the seats avaliablity
     private init() {}
     
     func loadSeats() {
-        if let data = UserDefaults.standard.data(forKey: "SeatsAvailability"),
-           let availability = try? JSONDecoder().decode([String: Bool].self, from: data) {
-            seatsAvailability = availability
-            print("Seats loaded: \(seatsAvailability)")
-        } else {
-            print("Failed to load seat availability data")
-        }
     }
     
     func saveSeats() {
@@ -30,12 +23,7 @@ class SeatManager { // for better management on the seats avaliablity
     }
     
     func loadMaximumSelectableSeats() -> Int {
-        if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo"),
-           let bookingInfo = try? JSONDecoder().decode(UserBookingInfo.self, from: bookingInfoData) {
-            // based on numberOfTravelers to limit how many seat the user can select
-            return bookingInfo.numberOfTravelers
-        }
-        return 0 // Default or error case
+        
     }
     
     func updateSeats(forBooking booking: Booking, isBookingDeleted: Bool = false) {

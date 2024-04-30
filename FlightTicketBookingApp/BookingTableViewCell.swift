@@ -15,8 +15,6 @@ class BookingTableViewCell: UITableViewCell {
     @IBOutlet weak var departureDateLabel: UILabel!
     @IBOutlet weak var returnDateLabel: UILabel!
     @IBOutlet weak var selectedSeatsLabel: UILabel!
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

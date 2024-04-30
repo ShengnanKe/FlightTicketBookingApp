@@ -179,27 +179,11 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
         // Print out and see if BookingInfoData is being stored in the userdefaults
         if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo") {
             // print("BookingInfoData: \(bookingInfoData)")
-            do {
-                let bookingInfo = try JSONDecoder().decode(UserBookingInfo.self, from: bookingInfoData)
-                print("BookingInfoData: \(bookingInfoData)")
-            } catch {
-                print("decode booking info failed!!! \(error)")
-            }
-        } else {
-            print("BookingInfo -> data not found in UserDefaults.")
         }
         
         // check for selected seats
         if let selectedSeatsData = UserDefaults.standard.data(forKey: "SelectedSeats") { // not "SeatsAvailability"
-            do {
-                selectedSeats = try JSONDecoder().decode([String: Bool].self, from: selectedSeatsData)
-                print("SelectedSeatsData: \(selectedSeatsData)")
-            } catch {
-                print("Failed to decode selected seats: \(error)")
-            }
-        } else {
-            print("SelectedSeats data not found in UserDefaults.")
-        }
+
         
         // finally the combination
         if let bookingInfo = bookingInfo, let selectedSeats = selectedSeats {
