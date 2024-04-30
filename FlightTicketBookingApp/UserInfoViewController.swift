@@ -14,24 +14,24 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var userInfoTableView: UITableView!
     
-    var userBillingInfo = UserBillingInfo(
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        passportNumber: "",
-        gender: "",
-        dateOfBirth: "",
-        cardName: "",
-        cardNumber: "",
-        expirationDate: "",
-        securityCode: "",
-        country: "",
-        billingAddress: "",
-        city: "",
-        state: "",
-        zipcode: ""
-    )
+    var bookingDictionary: [String: Any] = [
+            "First name": "",
+            "Last name": "",
+            "Email address": "",
+            "Phone number": 0,
+            "Passport": "",
+            "Gender": "",
+            "Date of birth": 0,
+            "Name on card": "",
+            "Debit/Credit card number": 0,
+            "Expiration date": "",
+            "Security code": 0,
+            "Country/Territory": "",
+            "Billing address": "",
+            "City": "",
+            "State": "",
+            "Zipcode": 0
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +104,7 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.formTextField.text = userBillingInfo.state
             case 15:
                 cell.formTextFieldLabel.text = "Zipcode"
-                cell.formTextField.text = userBillingInfo.zipcode
+                cell.formTextField.text = userBillingInfo.zipcode  // keyboard -> phone keyboard -> return
             default:
                 break
             }
@@ -212,45 +212,14 @@ class UserInfoViewController: UIViewController, UITableViewDelegate, UITableView
             print("Cannot save New booking")
         }
         
-        
-        if let billingInfoData = try? JSONEncoder().encode(userBillingInfo) {
-            UserDefaults.standard.set(billingInfoData, forKey: "UserBillingInfo")
-            print("UserBillingInfo saved.")
-        }
-        else {
-            print("Failed to encode UserBillingInfo.")
-        }
-        
     }
     
     func loadBookings() -> [Booking] {
-        let defaults = UserDefaults.standard
-        if let savedBookingsData = defaults.data(forKey: "Bookings"){
-            do {
-                let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
-                return savedBookings
-            } catch {
-                print("Failed to decode bookings: \(error)")
-            }
-        }
-        print("No bookings found in UserDefaults.")
         return []
     }
     
     func saveBookings(_ bookings: [Booking]) {
         print("start saving booking info")
-        let defaults = UserDefaults.standard
-        if let bookingsData = try? JSONEncoder().encode(bookings) {
-            defaults.set(bookingsData, forKey: "Bookings")
-            print("Bookings saved successfully.")
-            if let _ = defaults.data(forKey: "Bookings") {
-                print("Booking data is indeed saved.")
-            } else {
-                print("Booking data is not saved.")
-            }
-        } else {
-            print("Failed to encode bookings.")
-        }
     }
 }
 

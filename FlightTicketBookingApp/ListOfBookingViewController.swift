@@ -13,48 +13,55 @@
  
  */
 
-import UIKit
-
-struct UserBookingInfo: Codable {
-    var originCity: String
-    var destinationCity: String
-    var departureDate: String
-    var returnDate: String
-    var numberOfTravelers: Int
-}
-
-struct UserBillingInfo: Codable {
-    var firstName: String
-    var lastName: String
-    var email: String
-    var phoneNumber: String
-    var passportNumber: String
-    var gender: String
-    var dateOfBirth: String
-    var cardName: String
-    var cardNumber: String
-    var expirationDate: String
-    var securityCode: String
-    var country: String
-    var billingAddress: String
-    var city: String
-    var state: String
-    var zipcode: String
-}
-
-struct Booking: Codable {
-    var billingInfo: UserBillingInfo
-    var bookingInfo: UserBookingInfo
-    var selectedSeats: [String: Bool]
-}
+//import UIKit
 
 class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var listOfBookingTableView: UITableView!
     @IBOutlet weak var listOfBookingLabel: UILabel!
     
+    var bookingDetails: [String: Any] = [:]
+    
+//    var bookingDictionary: [String: Any] = [
+//        "bookingInfo": [
+//            "Origin City": "",
+//            "Destination city": "",
+//            "Start date": "",
+//            "End date": "",
+//            "Number of travelers": 0
+//        ],
+//        "billingInfo": [
+//            "First name": "",
+//            "Last name": "",
+//            "Email address": "",
+//            "Phone number": 0,
+//            "Passport": "",
+//            "Gender": "",
+//            "Date of birth": 0,
+//            "Name on card": "",
+//            "Debit/Credit card number": 0,
+//            "Expiration date": "",
+//            "Security code": 0,
+//            "Country/Territory": "",
+//            "Billing address": "",
+//            "City": "",
+//            "State": "",
+//            "Zipcode": 0
+//        ]
+        // in need to think about this
+//            ,
+//        "selectedSeats": [ // [String: Bool]
+//            "1A": true,
+//            "1B": false
+//        ]
+//    ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let docDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+//        print(docDirectoryURL)
         
         listOfBookingTableView.dataSource = self
         listOfBookingTableView.delegate = self
@@ -74,33 +81,18 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         listOfBookingTableView.reloadData()
         print("View will appear and bookings are reloaded.")
     }
-
+    
     // save list of bookings
     var bookings: [Booking] = []
     
     // load booking info
     
     func loadBookings() -> [Booking] {
-        if let savedBookingsData = UserDefaults.standard.data(forKey: "Bookings") {
-            do {
-                let savedBookings = try JSONDecoder().decode([Booking].self, from: savedBookingsData)
-                print("Loaded \(savedBookings.count) bookings from UserDefaults.")
-                return savedBookings
-            } catch {
-                print("Failed to decode bookings: \(error)")
-            }
-        }
-        print("No bookings found in UserDefaults.")
-        return []
+       return []
     }
-
+    
     func saveBookings() {
-        let defaults = UserDefaults.standard
-        if let bookingsData = try? JSONEncoder().encode(bookings) {
-            defaults.set(bookingsData, forKey: "Bookings")
-        } else {
-            print("Failed to encode bookings")
-        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

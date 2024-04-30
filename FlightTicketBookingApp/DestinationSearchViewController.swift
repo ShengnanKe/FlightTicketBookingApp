@@ -25,8 +25,13 @@ import UIKit
 
 class DestinationSearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    var bookingInfo = UserBookingInfo(originCity: "", destinationCity: "", departureDate: "", returnDate: "", numberOfTravelers: 1)
-    
+    var bookingDetails["bookingInfo"] = [
+        "Origin City": "",
+        "Destination city": "",
+        "Start date": "",
+        "End date": "",
+        "Number of travelers": 0
+    ]
     
     @IBOutlet weak var myTableView: UITableView!
     var cities = [String]()
@@ -148,38 +153,15 @@ class DestinationSearchViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func saveBookingInfo() {
-        let encoder = JSONEncoder()
-        
-        if let encoded = try? encoder.encode(bookingInfo) {
-            UserDefaults.standard.set(encoded, forKey: "BookingInfo")
-            print("Booking Info saved.")
-        } else {
-            print("Failed to encode Booking Info.")
-        }
     }
     
     func loadBookingInfo() -> UserBookingInfo? {
-        if let bookingInfoData = UserDefaults.standard.data(forKey: "BookingInfo") {
-            let decoder = JSONDecoder()
-            
-            if let bookingInfo = try? decoder.decode(UserBookingInfo.self, from: bookingInfoData) {
-                return bookingInfo
-            } else {
-                print("Failed to decode booking info")
-            }
-        }
         return nil
     }
     
     
     // for checking if info has been saved or not
     func printCurrentBookingInfo() {
-        let encoder = JSONEncoder()
-        
-        if let encoded = try? encoder.encode(bookingInfo),
-           let jsonString = String(data: encoded, encoding: .utf8) {
-            print(jsonString)
-        }
     }
     
 }
@@ -210,6 +192,7 @@ extension DestinationSearchViewController: UIPickerViewDelegate, UIPickerViewDat
     }
     
 }
+
 
 
 

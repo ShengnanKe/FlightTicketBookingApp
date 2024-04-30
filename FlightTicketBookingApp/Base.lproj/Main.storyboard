@@ -491,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLg-U2-ViU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2941" y="-1123"/>
+            <point key="canvasLocation" x="2637" y="-1163"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eX5-G7-5BG">
@@ -513,7 +513,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1rM-eI-VxC"/>
+        <segue reference="wE2-Cd-XpU"/>
         <segue reference="ora-E0-HQ5"/>
     </inferredMetricsTieBreakers>
     <resources>

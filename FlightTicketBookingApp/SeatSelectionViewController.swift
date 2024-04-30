@@ -26,12 +26,7 @@ class SeatManager { // for better management on the seats avaliablity
     }
     
     func saveSeats() {
-        if let data = try? JSONEncoder().encode(seatsAvailability) {
-            UserDefaults.standard.set(data, forKey: "SeatsAvailability")
-            print("Seats successfully saved")
-        } else {
-            print("Failed to encode seat availability data")
-        }
+        
     }
     
     func loadMaximumSelectableSeats() -> Int {
@@ -149,6 +144,7 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         collectionView.reloadItems(at: [indexPath])
     }
     
+    
     func saveSeatsAvailability() { // update SeatsAvailability as it changes
         SeatManager.shared.seatsAvailability = seatsAvailability
         SeatManager.shared.saveSeats()
@@ -185,8 +181,8 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         
         selectedCell.selectedSeatLabel.text = "\(sectionName) - \(indexPath.row + 1)"  // Display section and seat #
         
-        // Check the seat availability and update the cell backgroundColor
-        if let isSeatSelected = seatsAvailability[seatIndex], isSeatSelected {
+        
+        if let isSeatSelected = seatsAvailability[seatIndex], isSeatSelected { // Check the seat availability and update the cell backgroundColor
             selectedCell.backgroundColor = UIColor.gray  // Selected
             selectedCell.selectedSeatLabel.textColor = UIColor.white
         } else {
@@ -198,15 +194,8 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     
     func saveSelectedSeats() {
         // Convert the seatsAvailability dictionary to data and save it to UserDefaults
-        let defaults = UserDefaults.standard
-        if let data = try? JSONEncoder().encode(seatsAvailability) {
-            defaults.set(data, forKey: "SelectedSeats")
-            print("Selected seats saved successfully.")
-        } else {
-            print("Failed to save selected seats.")
-        }
+        
     }
-
     
     @IBAction func saveButtonTapped(_ sender: UIButton) { // to save all seatsAvailability into the seatsAvailability dictionary and save the selected seats
         
