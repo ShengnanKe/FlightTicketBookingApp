@@ -16,8 +16,7 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var listOfBookingTableView: UITableView!
     @IBOutlet weak var listOfBookingLabel: UILabel!
     
-    var bookings: [[String: Any]] = [] // this contains all the booking details from userdefau
- s
+    var bookings: [[String: Any]] = [] // this contains all the booking details from userdefaults
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,7 +61,6 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
                 fatalError("The dequeued cell is not an instance of BookingTableViewCell.")
             }
             
-            // Extract the booking dictionary for the current row
             let bookingDict = bookings[indexPath.row]
             
             // Extract bookingInfo and billingInfo parts
@@ -107,40 +105,29 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
         guard indexPath.section == 0 else { return nil } // only the bookings cell has delete and update
         
         // Delete
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
-            if let bookingToDelete = self?.bookings[indexPath.row]{
-                
-                SeatManager.shared.updateSeats(forBooking: bookingToDelete, isBookingDeleted: true)
-                self?.bookings.remove(at: indexPath.row)
-                self?.saveBookings() // save the updated list
-                tableView.deleteRows(at: [indexPath], with: .automatic) // reflect this change with animation
-                completionHandler(true)
-            }
-            else{
-                completionHandler(false)
-            }
-            
-        }
-        
-        // Update
-        let updateAction = UIContextualAction(style: .normal, title: "Update") { (action, view, completionHandler) in
-            // Usually, you would transition to another view controller to update the selected booking
-            // For now, we'll call the completion handler
-            // TODO: Implement update functionality
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, completionHandler in
+            self?.bookings.remove(at: indexPath.row)
+            self?.saveBookings()
+            tableView.deleteRows(at: [indexPath], with: .fade)
             completionHandler(true)
         }
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] action, view, completionHandler in
+            // Assuming you have a method to handle editing
+            self?.editBooking(at: indexPath.row)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .blue
         
-        deleteAction.backgroundColor = .red
-        updateAction.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+    }
         
-        let swipeAction = UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
-        swipeAction.performsFirstActionWithFullSwipe = false
-        
-        return swipeAction
+    func editBooking(at index: Int) {
+        print("Edit booking at index \(index)")
     }
     
     @IBAction func addBookingButtonPressed(_ sender: UIButton) {
-        bookingDetails = [
+        // data for a new booking
+        let newBooking: [String: Any] = [
             "bookingInfo": [
                 "originCity": "",
                 "destinationCity": "",
@@ -168,13 +155,17 @@ class ListOfBookingViewController: UIViewController, UITableViewDataSource, UITa
                 "Zipcode": 0
             ]
         ]
+        bookings.append(newBooking)
+        saveBookings()
+        listOfBookingTableView.reloadData()
     }
-    
-    func loadBookings() {
+
+    func loadBookings() -> [[String: Any]] {
         let defaults = UserDefaults.standard
         if let savedBookings = defaults.array(forKey: "Bookings") as? [[String: Any]] {
-            bookings = savedBookings
+            return savedBookings
         }
+        return []  // Return an empty array if there are no saved bookings
     }
     
     func saveBookings() {

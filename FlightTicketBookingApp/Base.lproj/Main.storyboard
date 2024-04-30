@@ -251,26 +251,24 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5z-KI-GUc">
-                                                    <rect key="frame" x="20" y="45" width="353" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="izW-0I-eCH">
+                                                    <rect key="frame" x="20" y="47" width="353" height="38"/>
+                                                </datePicker>
                                             </subviews>
                                             <color key="backgroundColor" red="0.58706229759999995" green="0.79736839370000001" blue="0.53200671070000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="b5z-KI-GUc" secondAttribute="bottom" constant="21" id="0cu-mO-KfQ"/>
-                                                <constraint firstItem="b5z-KI-GUc" firstAttribute="trailing" secondItem="7Bz-c9-N2A" secondAttribute="trailingMargin" id="31A-s1-WMv"/>
-                                                <constraint firstItem="b5z-KI-GUc" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="R2V-Lz-tAw"/>
-                                                <constraint firstItem="b5z-KI-GUc" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="8" symbolic="YES" id="SK6-tq-yCs"/>
+                                                <constraint firstItem="izW-0I-eCH" firstAttribute="top" secondItem="Due-kY-jKL" secondAttribute="bottom" constant="10" id="Ejj-HB-4UE"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Due-kY-jKL" secondAttribute="trailing" constant="20" symbolic="YES" id="dF0-7T-PSF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="izW-0I-eCH" secondAttribute="trailing" id="hQa-Y3-m94"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="izW-0I-eCH" secondAttribute="bottom" constant="15" id="njK-Tt-DY6"/>
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="tRk-ke-NLg"/>
                                                 <constraint firstItem="Due-kY-jKL" firstAttribute="top" secondItem="7Bz-c9-N2A" secondAttribute="topMargin" id="uMq-qY-CTh"/>
+                                                <constraint firstItem="izW-0I-eCH" firstAttribute="leading" secondItem="7Bz-c9-N2A" secondAttribute="leadingMargin" id="vfX-LX-nF0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="datePicker" destination="izW-0I-eCH" id="W2W-on-pP5"/>
                                             <outlet property="dateSelectionLabel" destination="Due-kY-jKL" id="X15-U1-Z2E"/>
-                                            <outlet property="dateTextfield" destination="b5z-KI-GUc" id="BV0-UR-vUO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelerNumCell" rowHeight="110" id="geU-Rp-KJX" customClass="TravelerNumTableViewCell" customModule="FlightTicketBookingApp" customModuleProvider="target">
@@ -358,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1e-eg-xY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-402" y="-52"/>
+            <point key="canvasLocation" x="-402.29007633587787" y="-52.112676056338032"/>
         </scene>
         <!--List Of Booking View Controller-->
         <scene sceneID="Myd-jE-xAa">
@@ -513,7 +511,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wE2-Cd-XpU"/>
         <segue reference="ora-E0-HQ5"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -9,36 +9,6 @@
 
 import UIKit
 
-class SeatManager { // for better management on the seats avaliablity
-    static let shared = SeatManager()
-    var seatsAvailability: [String: Bool] = [:]
-    
-    private init() {}
-    
-    func loadSeats() {
-    }
-    
-    func saveSeats() {
-        
-    }
-    
-    func loadMaximumSelectableSeats() -> Int {
-        
-    }
-    
-    func updateSeats(forBooking booking: Booking, isBookingDeleted: Bool = false) {
-        for (seat, isSelected) in booking.selectedSeats {
-            if isBookingDeleted {
-                seatsAvailability[seat] = false // If booking is deleted, mark seats as available
-            } else {
-                seatsAvailability[seat] = isSelected // Update the current booking info for the update function
-            }
-        }
-        saveSeats()
-    }
-}
-
-
 class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     // save seats avalibility info - bool - 0(unselected)/1(selected)
@@ -62,14 +32,8 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         // to allow de-select a cell action, I used
         seatSelectionCollectionView.allowsMultipleSelection = true
         
-        self.maxSelectableSeats = SeatManager.shared.loadMaximumSelectableSeats()
-        SeatManager.shared.loadSeats()
-        
-        self.seatsAvailability = SeatManager.shared.seatsAvailability
-        
         // needed: to show updates with seats that have been selected
         seatSelectionCollectionView.reloadData()
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -108,34 +72,28 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         
         let seatIndex = "\(indexPath.section)-\(indexPath.row)" // 0:"First Class" or 1:"Economy Class" and it's seat #
         
-        let isCurrentlySelected = seatsAvailability[seatIndex] ?? false // check and see if this seat is selected or not, and set default to fasle
-        
-        // to change the status of the current seat and print in the concole for confirmation
-        if isCurrentlySelected {
+        if let isCurrentlySelected = seatsAvailability[seatIndex], isCurrentlySelected {
+            // Deselect the seat if it is already selected
             seatsAvailability[seatIndex] = false
-            collectionView.deselectItem(at: indexPath, animated: true)
-            print("De Select - \(indexPath.section)-\(indexPath.row)")
+            collectionView.reloadItems(at: [indexPath])
+            print("Deselected \(seatIndex)")
         } else {
-            // Check if the maximum number of selectable seats has been reached
+            // Select the seat if it is not selected and if the limit has not been reached
             let currentSelectedCount = seatsAvailability.values.filter { $0 }.count
             if currentSelectedCount < maxSelectableSeats {
                 seatsAvailability[seatIndex] = true
-                print("Select - \(indexPath.section)-\(indexPath.row)")
+                collectionView.reloadItems(at: [indexPath])
+                print("Selected \(seatIndex)")
             } else {
-                print("Maximum seat selection limit reached.")
-                return
+                print("Maximum seat selection limit reached. You can only select \(maxSelectableSeats) seats.")
             }
         }
-        
-        SeatManager.shared.seatsAvailability = seatsAvailability
-        SeatManager.shared.saveSeats()
-        collectionView.reloadItems(at: [indexPath])
     }
     
     
     func saveSeatsAvailability() { // update SeatsAvailability as it changes
-        SeatManager.shared.seatsAvailability = seatsAvailability
-        SeatManager.shared.saveSeats()
+        UserDefaults.standard.set(seatsAvailability, forKey: "SeatsAvailability")
+        UserDefaults.standard.synchronize()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -161,27 +119,17 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let selectedCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSeatCell", for: indexPath) as! SelectedSeatCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSeatCell", for: indexPath) as! SelectedSeatCollectionViewCell
         
         let sectionName = indexPath.section == 0 ? "First Class" : "Economy Class"
         let seatIndex = "\(indexPath.section)-\(indexPath.row)"
+        let isSeatSelected = seatsAvailability[seatIndex, default: false]
         
-        selectedCell.selectedSeatLabel.text = "\(sectionName) - \(indexPath.row + 1)"  // Display section and seat #
+        cell.selectedSeatLabel.text = "\(sectionName) - Seat \(indexPath.row + 1)"
+        cell.backgroundColor = isSeatSelected ? UIColor.gray : UIColor.green
+        cell.selectedSeatLabel.textColor = isSeatSelected ? UIColor.white : UIColor.black
         
-        
-        if let isSeatSelected = seatsAvailability[seatIndex], isSeatSelected { // Check the seat availability and update the cell backgroundColor
-            selectedCell.backgroundColor = UIColor.gray  // Selected
-            selectedCell.selectedSeatLabel.textColor = UIColor.white
-        } else {
-            selectedCell.backgroundColor = UIColor.green  // Not selected
-            selectedCell.selectedSeatLabel.textColor = UIColor.black
-        }
-        
-        return selectedCell    }
-    
-    func saveSelectedSeats() {
-        // Convert the seatsAvailability dictionary to data and save it to UserDefaults
+        return cell
         
     }
     
@@ -189,13 +137,10 @@ class SeatSelectionViewController: UIViewController , UICollectionViewDelegate, 
         
         saveSeatsAvailability()
         
-        saveSelectedSeats()
-        
         printCurrentSeatSelections()
         
         print("Seat selections saved successfully.")
     }
-    
     
     func printCurrentSeatSelections() {
         for (seatIndex, isSelected) in seatsAvailability.sorted(by: { $0.key < $1.key }) {
